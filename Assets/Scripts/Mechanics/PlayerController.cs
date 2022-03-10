@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using Platformer.Gameplay;
 using static Platformer.Core.Simulation;
 using Platformer.Model;
@@ -41,13 +42,14 @@ namespace Platformer.Mechanics
         public Bounds Bounds => collider2d.bounds;
 
         //public int tokensCollected = 0;
-        //public Token token;
-
+        public Token token;
+        
+        public RuntimeAnimatorController playerControllerTokens;
+        
         void Awake()
         {
-            //token = GetComponent<Token>();
-            //Debug.Log($"Current Token = {token.currentToken.ToString()}");
             health = GetComponent<Health>();
+            token = GetComponent<Token>();
             audioSource = GetComponent<AudioSource>();
             collider2d = GetComponent<Collider2D>();
             spriteRenderer = GetComponent<SpriteRenderer>();
