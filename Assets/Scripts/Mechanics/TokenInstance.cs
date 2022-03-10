@@ -55,7 +55,7 @@ namespace Platformer.Mechanics
                 collected = true;
             //send an event into the gameplay system to perform some behaviour.
             var ev = Schedule<PlayerTokenCollision>();
-            ev.token = this;
+            ev.tokenInstance = this;
             ev.player = player;
         }
     }
