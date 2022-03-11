@@ -55,8 +55,9 @@ namespace Platformer.Mechanics
         /// <param name="dir"></param>
         public void Bounce(Vector2 dir)
         {
-            velocity.y = dir.y;
             velocity.x = dir.x;
+            velocity.y = dir.y;
+            
         }
 
         /// <summary>
