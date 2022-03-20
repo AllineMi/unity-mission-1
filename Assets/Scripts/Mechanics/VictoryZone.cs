@@ -18,11 +18,10 @@ namespace Platformer.Mechanics
             if (player.token.allTokensCollected)
             {
                 Debug.Log("All tokens collected!");
-                // TODO to check
+                // TODO maybe remove this from here and create a new code for it. same way as i did with JigglerTrigger
                 jumpPad.collider2d.enabled = true;
             }
-                
-            Debug.Log("NOT all tokens collected!");
+
             var ev = Schedule<PlayerEnteredVictoryZone>();
             ev.victoryZone = this;
         }

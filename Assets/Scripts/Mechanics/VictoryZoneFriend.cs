@@ -5,6 +5,7 @@ namespace Platformer.Mechanics
 {
     public class VictoryZoneFriend : MonoBehaviour
     {
+        // TODO see if code is well designed
         public PlayerController friend;
         void OnTriggerEnter2D(Collider2D other)
         {
