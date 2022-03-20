@@ -9,36 +9,24 @@ using UnityEngine;
 /// <typeparam name="Teletransportation"></typeparam>
 public class Teletransportation : Simulation.Event<Teletransportation>
 {
-    public TeleportPad destinationPad;
-    private PlayerController playerController;
-    public Collider2D collider2D;
+    internal Rigidbody2D destinationPad;
+    internal PlayerController playerController;
 
     public override void Execute()
-    {
-        playerController = collider2D.gameObject.GetComponent<PlayerController>();
-        
-        TurnPlayerEast();
-        
-        LockDestination();
-        
+    { 
         DisablePlayerControl();
         
+        TurnPlayerEast();
+
         var playerDestination = GetPlayerDestination();
         TeleportPlayer(playerDestination);
         
         EnablePlayerControl();
-
-        UnlockDestination();
     }
     
     private void TurnPlayerEast()
     {
         playerController.spriteRenderer.flipX = false;
-    }
-    
-    private void LockDestination()
-    {
-        destinationPad.isDestination = true;
     }
     
     private void DisablePlayerControl()
@@ -59,10 +47,5 @@ public class Teletransportation : Simulation.Event<Teletransportation>
     private void EnablePlayerControl()
     {
         Simulation.Schedule<EnablePlayerInput>(1f); // Enables player control
-    }
-    
-    private void UnlockDestination()
-    {
-        destinationPad.isDestination = false;
     }
 }
