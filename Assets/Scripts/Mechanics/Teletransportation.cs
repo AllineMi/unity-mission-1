@@ -36,7 +36,7 @@ public class Teletransportation : Simulation.Event<Teletransportation>
         playerController.spriteRenderer.flipX = false;
     }
     
-    private void DisablePlayerControl()
+    private static void DisablePlayerControl()
     {
         Simulation.Schedule<DisablePlayerInput>(); // Disables player control
     }
@@ -51,7 +51,7 @@ public class Teletransportation : Simulation.Event<Teletransportation>
         playerController.Teleport(playerDestination);
     }
     
-    private void EnablePlayerControl()
+    private static void EnablePlayerControl()
     {
         Simulation.Schedule<EnablePlayerInput>(1f); // Enables player control
     }

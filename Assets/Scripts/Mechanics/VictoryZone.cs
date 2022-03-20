@@ -1,4 +1,3 @@
-using System;
 using Platformer.Gameplay;
 using UnityEngine;
 using static Platformer.Core.Simulation;
@@ -15,18 +14,17 @@ namespace Platformer.Mechanics
         void OnTriggerEnter2D(Collider2D collider)
         {
             var player = collider.gameObject.GetComponent<PlayerController>();
-            if (player != null)
+            if (player == null) return;
+            if (player.token.allTokensCollected)
             {
-                if (player.token.allTokensCollected)
-                {
-                    Debug.Log("All tokens collected!");
-                    jumpPad.collider2d.enabled = true;
-                }
-                
-                Debug.Log("NOT all tokens collected!");
-                var ev = Schedule<PlayerEnteredVictoryZone>();
-                ev.victoryZone = this;
+                Debug.Log("All tokens collected!");
+                // TODO to check
+                jumpPad.collider2d.enabled = true;
             }
+                
+            Debug.Log("NOT all tokens collected!");
+            var ev = Schedule<PlayerEnteredVictoryZone>();
+            ev.victoryZone = this;
         }
     }
 }

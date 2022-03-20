@@ -23,5 +23,4 @@ public class PlatformerSpeedPad : MonoBehaviour
         yield return new WaitForSeconds(lifetime);
         player.maxSpeed = initialSpeed;
     }
-
 }
