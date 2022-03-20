@@ -55,8 +55,8 @@ namespace Platformer.Mechanics
         /// <param name="dir"></param>
         public void Bounce(Vector2 dir)
         {
-            velocity.x = dir.x;
             velocity.y = dir.y;
+            velocity.x = dir.x;
         }
 
         /// <summary>
@@ -132,7 +132,6 @@ namespace Platformer.Mechanics
             move = Vector2.up * deltaPosition.y;
 
             PerformMovement(move, true);
-
         }
 
         void PerformMovement(Vector2 move, bool yMovement)
@@ -158,6 +157,7 @@ namespace Platformer.Mechanics
                             currentNormal.x = 0;
                         }
                     }
+
                     if (IsGrounded)
                     {
                         //how much of our velocity aligns with surface normal?
@@ -174,13 +174,14 @@ namespace Platformer.Mechanics
                         velocity.x *= 0;
                         velocity.y = Mathf.Min(velocity.y, 0);
                     }
+
                     //remove shellDistance from actual move distance.
                     var modifiedDistance = hitBuffer[i].distance - shellRadius;
                     distance = modifiedDistance < distance ? modifiedDistance : distance;
                 }
             }
+
             body.position = body.position + move.normalized * distance;
         }
-
     }
 }
