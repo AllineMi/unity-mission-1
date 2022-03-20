@@ -5,7 +5,6 @@ using Platformer.Core;
 using Platformer.Mechanics;
 using Platformer.Model;
 using UnityEngine;
-using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
 
 namespace Platformer.Gameplay
@@ -43,6 +42,7 @@ namespace Platformer.Gameplay
         /// <summary>
         /// When the player gets hurt, it will move away from the enemy.
         /// </summary>
+        /// <param name="playerController"></param>
         private static void TeleportPlayerHurtPosition(PlayerController player)
         {
             // Player current position
