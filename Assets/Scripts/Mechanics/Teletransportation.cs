@@ -4,7 +4,7 @@ using Platformer.Mechanics;
 using UnityEngine;
 
 /// <summary>
-/// This event is triggered when the player character enters a trigger with a VictoryZone component.
+/// This event is triggered when the player character enters a trigger with a TeleportPad component.
 /// </summary>
 /// <typeparam name="Teletransportation"></typeparam>
 public class Teletransportation : Simulation.Event<Teletransportation>
@@ -13,7 +13,9 @@ public class Teletransportation : Simulation.Event<Teletransportation>
     internal PlayerController playerController;
 
     public override void Execute()
-    { 
+    {
+        LockDestination();
+        
         DisablePlayerControl();
         
         TurnPlayerEast();
@@ -22,6 +24,11 @@ public class Teletransportation : Simulation.Event<Teletransportation>
         TeleportPlayer(playerDestination);
         
         EnablePlayerControl();
+    }
+    
+    private void LockDestination()
+    {
+        destinationPad.GetComponent<TeleportPad>().isDestination = true;
     }
     
     private void TurnPlayerEast()
