@@ -16,6 +16,7 @@ namespace Platformer.Mechanics
         /// </summary>
         public int maxToken = 20;
         public int currentToken;
+        protected internal bool allTokensCollected = false;
         
         /// <summary>
         /// Increment the Token of the entity.
@@ -34,10 +35,10 @@ namespace Platformer.Mechanics
         {
             PlatformerModel model = Simulation.GetModel<PlatformerModel>();
             PlayerController player = model.player;
-            if (currentToken == 20)
-            {
-                player.animator.runtimeAnimatorController = player.playerControllerTokens as RuntimeAnimatorController;
-            }
+            if (currentToken != 20) return;
+            
+            allTokensCollected = true;
+            player.animator.runtimeAnimatorController = player.playerControllerTokens;
         }
     }
 }

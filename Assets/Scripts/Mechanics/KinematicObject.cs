@@ -106,7 +106,7 @@ namespace Platformer.Mechanics
 
         protected virtual void ComputeVelocity()
         {
-
+            
         }
 
         protected virtual void FixedUpdate()

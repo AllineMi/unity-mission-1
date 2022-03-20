@@ -1,11 +1,13 @@
+using Platformer.Core;
 using Platformer.Gameplay;
+using Platformer.Model;
 using UnityEngine;
 using static Platformer.Core.Simulation;
 
 namespace Platformer.Mechanics
 {
     /// <summary>
-    /// Represebts the current vital statistics of some game entity.
+    /// Represents the current vital statistics of some game entity.
     /// </summary>
     public class Health : MonoBehaviour
     {
@@ -14,12 +16,12 @@ namespace Platformer.Mechanics
         /// </summary>
         public int maxHP = 10;
 
+        public int currentHP;
+        
         /// <summary>
         /// Indicates if the entity should be considered 'alive'.
         /// </summary>
         public bool IsAlive => currentHP > 0;
-
-        public int currentHP = 5;
 
         /// <summary>
         /// Decrement the HP of the entitiy.

@@ -9,14 +9,21 @@ namespace Platformer.Mechanics
     /// </summary>
     public class VictoryZone : MonoBehaviour
     {
+        public PlatformerJumpPad jumpPad;
+        
         void OnTriggerEnter2D(Collider2D collider)
         {
-            var p = collider.gameObject.GetComponent<PlayerController>();
-            if (p != null)
+            var player = collider.gameObject.GetComponent<PlayerController>();
+            if (player == null) return;
+            if (player.token.allTokensCollected)
             {
-                var ev = Schedule<PlayerEnteredVictoryZone>();
-                ev.victoryZone = this;
+                Debug.Log("All tokens collected!");
+                // TODO maybe remove this from here and create a new code for it. same way as i did with JigglerTrigger
+                jumpPad.collider2d.enabled = true;
             }
+
+            var ev = Schedule<PlayerEnteredVictoryZone>();
+            ev.victoryZone = this;
         }
     }
 }

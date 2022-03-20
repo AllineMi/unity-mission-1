@@ -46,12 +46,22 @@ namespace Platformer.Gameplay
         private static void TeleportPlayerHurtPosition(PlayerController player)
         {
             // Player current position
-            var playerCurrentPosition = player.GetComponent<PlayerController>().transform.position;
-            float playerNewxPosition = 0;
-            
-            playerNewxPosition = playerCurrentPosition.x / 4;
-       
-            Vector3 playerNewPosition = new Vector3(playerNewxPosition, playerCurrentPosition.y);
+            var playerPosition = player.transform.position;
+            var playerXPosition = playerPosition.x;
+            var playerYPosition = playerPosition.y;
+            float playerNewXPosition;
+            const float distanceToBeTeleported = 1.0f;
+            // TODO also check where enemy collides (player's front or back) and move away from it)
+            if (player.spriteRenderer.flipX) // If Player is facing East
+            {
+                playerNewXPosition = playerXPosition + distanceToBeTeleported;
+            }
+            else // If Player is facing West
+            {
+                playerNewXPosition = playerXPosition - distanceToBeTeleported;
+            }
+
+            Vector3 playerNewPosition = new Vector3(playerNewXPosition, playerYPosition);
             player.TeleportHurt(playerNewPosition);
         }
     }
