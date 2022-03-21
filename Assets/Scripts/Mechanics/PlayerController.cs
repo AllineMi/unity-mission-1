@@ -16,36 +16,34 @@ namespace Platformer.Mechanics
         public AudioClip jumpAudio;
         public AudioClip respawnAudio;
         public AudioClip ouchAudio;
+        /*internal new*/ public AudioSource audioSource;
 
-        /// <summary>
-        /// Max horizontal speed of the player.
-        /// </summary>
-        public float maxSpeed = 7;
-        /// <summary>
-        /// Initial jump velocity at the start of a jump.
-        /// </summary>
+        /// <summary> Initial jump velocity at the start of a jump. </summary>
         public float jumpTakeOffSpeed = 7;
-
         public JumpState jumpState = JumpState.Grounded;
         private bool stopJump;
-        /*internal new*/ public Collider2D collider2d;
-        /*internal new*/ public AudioSource audioSource;
-        public Health health;
-        public bool controlEnabled = true;
-
         bool jump;
+
+        /*internal new*/
+        public Collider2D collider2d;
+
+        public Health health;
+
+        /// <summary> Max horizontal speed of the player. </summary>
+        public float maxSpeed = 7;
         Vector2 move;
+        public bool controlEnabled = true;
         public SpriteRenderer spriteRenderer;
         internal Animator animator;
+
         readonly PlatformerModel model = Simulation.GetModel<PlatformerModel>();
 
         public Bounds Bounds => collider2d.bounds;
 
         //public int tokensCollected = 0;
         public Token token;
-        
         public RuntimeAnimatorController playerControllerTokens;
-        
+
         void Awake()
         {
             health = GetComponent<Health>();
@@ -73,6 +71,7 @@ namespace Platformer.Mechanics
             {
                 move.x = 0;
             }
+
             UpdateJumpState();
             base.Update();
         }
@@ -93,6 +92,7 @@ namespace Platformer.Mechanics
                         Schedule<PlayerJumped>().player = this;
                         jumpState = JumpState.InFlight;
                     }
+
                     break;
                 case JumpState.InFlight:
                     if (IsGrounded)
@@ -100,6 +100,7 @@ namespace Platformer.Mechanics
                         Schedule<PlayerLanded>().player = this;
                         jumpState = JumpState.Landed;
                     }
+
                     break;
                 case JumpState.Landed:
                     jumpState = JumpState.Grounded;
@@ -143,6 +144,7 @@ namespace Platformer.Mechanics
             Landed
         }
 
+        // TODO to check
         public enum TokenSpriteType
         {
             SpriteNormal,

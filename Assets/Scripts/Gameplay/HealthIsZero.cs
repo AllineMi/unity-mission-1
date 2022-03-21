@@ -1,6 +1,4 @@
-using Platformer.Core;
 using Platformer.Mechanics;
-using UnityEngine;
 using static Platformer.Core.Simulation;
 
 namespace Platformer.Gameplay
@@ -10,7 +8,7 @@ namespace Platformer.Gameplay
     /// PlayerDeath event.
     /// </summary>
     /// <typeparam name="HealthIsZero"></typeparam>
-    public class HealthIsZero : Simulation.Event<HealthIsZero>
+    public class HealthIsZero : Event<HealthIsZero>
     {
         public Health health;
 
