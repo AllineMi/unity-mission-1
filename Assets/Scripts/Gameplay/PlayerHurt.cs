@@ -1,10 +1,6 @@
-﻿using System;
-using System.Numerics;
-using System.Runtime.InteropServices;
-using Platformer.Core;
+﻿using Platformer.Core;
 using Platformer.Mechanics;
 using Platformer.Model;
-using UnityEngine;
 using Vector3 = UnityEngine.Vector3;
 
 namespace Platformer.Gameplay
@@ -15,7 +11,7 @@ namespace Platformer.Gameplay
     /// <typeparam name="PlayerHurt"></typeparam>
     public class PlayerHurt : Simulation.Event<PlayerHurt>
     {
-        PlatformerModel model = Simulation.GetModel<PlatformerModel>();
+        readonly PlatformerModel model = Simulation.GetModel<PlatformerModel>();
 
         public override void Execute()
         {
@@ -42,7 +38,7 @@ namespace Platformer.Gameplay
         /// <summary>
         /// When the player gets hurt, it will move away from the enemy.
         /// </summary>
-        /// <param name="playerController"></param>
+        /// <param name="player"></param>
         private static void TeleportPlayerHurtPosition(PlayerController player)
         {
             // Player current position
