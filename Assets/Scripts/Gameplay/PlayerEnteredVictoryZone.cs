@@ -13,21 +13,21 @@ namespace Platformer.Gameplay
     public class PlayerEnteredVictoryZone : Event<PlayerEnteredVictoryZone>
     {
         readonly PlatformerModel model = Simulation.GetModel<PlatformerModel>();
-        
+
         public VictoryZone victoryZone;
         private PlayerController player;
         private PlayerController friend;
 
         private VictoryCondition victoryCondition;
         public bool shortcutActivate = false;
-        
+
         public override void Execute()
         {
             player = victoryZone.player;
             friend = victoryZone.friend;
             player.controlEnabled = false;
             model.virtualCamera.enabled = false;
-            
+
             if (friend == null || player == null) Debug.Log($"Friend or Player is NULL");
             CheckVictoryCondition();
             Celebrate();
@@ -47,10 +47,16 @@ namespace Platformer.Gameplay
                 }
                 case VictoryCondition.Shortcut:
                 {
+                    // TODO use playerRigidBody.rotation = 50f; to make seem that is running away
                     break;
                 }
                 case VictoryCondition.Token:
                 {
+                    // var pv = Schedule<PlayerVictory>();
+                    // pv.victoryZone = victoryZone;
+
+                    var pvr = Schedule<PlayerVictoryToken>(1f);
+                    pvr.victoryZone = victoryZone;
                     break;
                 }
                 case VictoryCondition.TokenShortcut:
@@ -64,6 +70,7 @@ namespace Platformer.Gameplay
         {
             if (player.token.currentToken < 20) victoryCondition = shortcutActivate == false ? VictoryCondition.Default : VictoryCondition.Shortcut;
             if (player.token.currentToken == 20) victoryCondition = shortcutActivate == false ? VictoryCondition.Token : VictoryCondition.TokenShortcut;
+            //victoryCondition = shortcutActivate == false ? VictoryCondition.Default : VictoryCondition.Shortcut;
         }
 
         private enum VictoryCondition

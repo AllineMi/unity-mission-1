@@ -14,12 +14,18 @@ namespace Platformer.Mechanics
             player = victoryZone.player;
             friend = victoryZone.friend;
             friend.spriteRenderer.flipX = false;
+            VictoryRun();
+            friend.animator.SetTrigger("victoryRun");
+            player.animator.SetTrigger("victoryRun");
+        }
+
+        private void VictoryRun()
+        {
             Rigidbody2D playerRigidBody = player.animator.GetComponent<Rigidbody2D>();
             Rigidbody2D friendRigidBody = friend.animator.GetComponent<Rigidbody2D>();
             playerRigidBody.velocity = new Vector2(2f, 0f);
             friendRigidBody.velocity = new Vector2(2f, 0f);
-            friend.animator.SetTrigger("victoryRun");
-            player.animator.SetTrigger("victoryRun");
+
         }
     }
 }

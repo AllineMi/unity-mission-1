@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using Platformer.Gameplay;
 using static Platformer.Core.Simulation;
 using Platformer.Model;
@@ -21,8 +20,8 @@ namespace Platformer.Mechanics
         /// <summary> Initial jump velocity at the start of a jump. </summary>
         public float jumpTakeOffSpeed = 7;
         public JumpState jumpState = JumpState.Grounded;
-        private bool stopJump;
-        bool jump;
+        internal bool stopJump;
+        internal bool jump;
 
         /*internal new*/
         public Collider2D collider2d;
@@ -31,7 +30,7 @@ namespace Platformer.Mechanics
 
         /// <summary> Max horizontal speed of the player. </summary>
         public float maxSpeed = 7;
-        Vector2 move;
+        public Vector2 move;
         public bool controlEnabled = true;
         public SpriteRenderer spriteRenderer;
         internal Animator animator;
@@ -76,8 +75,9 @@ namespace Platformer.Mechanics
             base.Update();
         }
 
-        void UpdateJumpState()
+        public void UpdateJumpState()
         {
+            if(jumpState == JumpState.Rolling) Debug.Log($"jump state: {jumpState}");
             jump = false;
             switch (jumpState)
             {
@@ -104,6 +104,13 @@ namespace Platformer.Mechanics
                     break;
                 case JumpState.Landed:
                     jumpState = JumpState.Grounded;
+                    break;
+                case JumpState.Rolling:
+                    Debug.Log($"isGrounded? {IsGrounded}");
+                    if (IsGrounded)
+                    {
+                        Schedule<PlayerRolling>().player = this;
+                    }
                     break;
             }
         }
@@ -141,7 +148,8 @@ namespace Platformer.Mechanics
             PrepareToJump,
             Jumping,
             InFlight,
-            Landed
+            Landed,
+            Rolling
         }
 
         // TODO to check

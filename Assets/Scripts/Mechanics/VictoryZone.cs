@@ -9,9 +9,7 @@ namespace Platformer.Mechanics
     /// </summary>
     public class VictoryZone : MonoBehaviour
     {
-        //[HideInInspector]
         public PlayerController player;
-        //[HideInInspector]
         public PlayerController friend;
 
         void OnTriggerEnter2D(Collider2D other)
