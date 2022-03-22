@@ -14,14 +14,18 @@ namespace Platformer.Mechanics
     {
         public AudioClip jumpAudio;
         public AudioClip respawnAudio;
+
         public AudioClip ouchAudio;
-        /*internal new*/ public AudioSource audioSource;
+
+        /*internal new*/
+        public AudioSource audioSource;
 
         /// <summary> Initial jump velocity at the start of a jump. </summary>
         public float jumpTakeOffSpeed = 7;
+
         public JumpState jumpState = JumpState.Grounded;
-        internal bool stopJump;
-        internal bool jump;
+        private bool stopJump;
+        bool jump;
 
         /*internal new*/
         public Collider2D collider2d;
@@ -30,7 +34,8 @@ namespace Platformer.Mechanics
 
         /// <summary> Max horizontal speed of the player. </summary>
         public float maxSpeed = 7;
-        public Vector2 move;
+
+        Vector2 move;
         public bool controlEnabled = true;
         public SpriteRenderer spriteRenderer;
         internal Animator animator;
@@ -75,9 +80,8 @@ namespace Platformer.Mechanics
             base.Update();
         }
 
-        public void UpdateJumpState()
+        void UpdateJumpState()
         {
-            if(jumpState == JumpState.Rolling) Debug.Log($"jump state: {jumpState}");
             jump = false;
             switch (jumpState)
             {
@@ -104,13 +108,6 @@ namespace Platformer.Mechanics
                     break;
                 case JumpState.Landed:
                     jumpState = JumpState.Grounded;
-                    break;
-                case JumpState.Rolling:
-                    Debug.Log($"isGrounded? {IsGrounded}");
-                    if (IsGrounded)
-                    {
-                        Schedule<PlayerRolling>().player = this;
-                    }
                     break;
             }
         }
@@ -148,8 +145,7 @@ namespace Platformer.Mechanics
             PrepareToJump,
             Jumping,
             InFlight,
-            Landed,
-            Rolling
+            Landed
         }
 
         // TODO to check

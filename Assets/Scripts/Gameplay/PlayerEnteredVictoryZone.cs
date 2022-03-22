@@ -50,15 +50,6 @@ namespace Platformer.Gameplay
                     // TODO use playerRigidBody.rotation = 50f; to make seem that is running away
                     break;
                 }
-                case VictoryCondition.Token:
-                {
-                    // var pv = Schedule<PlayerVictory>();
-                    // pv.victoryZone = victoryZone;
-
-                    var pvr = Schedule<PlayerVictoryToken>(1f);
-                    pvr.victoryZone = victoryZone;
-                    break;
-                }
                 case VictoryCondition.TokenShortcut:
                 {
                     break;
@@ -68,9 +59,17 @@ namespace Platformer.Gameplay
 
         void CheckVictoryCondition()
         {
+            // "no shortcut, no token," and "no shortcut, yes token" have the same logic. Only sprite changes (not modified here).
+            victoryCondition = shortcutActivate == false ? VictoryCondition.Default : VictoryCondition.Shortcut;
+            // "yes shortcut, no token"
+            if (shortcutActivate && player.token.currentToken < 20) victoryCondition = VictoryCondition.Shortcut;
+            // "yes shortcut, yes token"
+            if (!shortcutActivate || player.token.currentToken == 20) victoryCondition = VictoryCondition.TokenShortcut;
+
             if (player.token.currentToken < 20) victoryCondition = shortcutActivate == false ? VictoryCondition.Default : VictoryCondition.Shortcut;
-            if (player.token.currentToken == 20) victoryCondition = shortcutActivate == false ? VictoryCondition.Token : VictoryCondition.TokenShortcut;
-            //victoryCondition = shortcutActivate == false ? VictoryCondition.Default : VictoryCondition.Shortcut;
+
+            // if (player.token.currentToken == 20) victoryCondition = shortcutActivate == false ? VictoryCondition.Token : VictoryCondition.TokenShortcut;
+
         }
 
         private enum VictoryCondition
