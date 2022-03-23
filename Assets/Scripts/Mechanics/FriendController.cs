@@ -80,6 +80,7 @@ namespace Platformer.Mechanics
 
                     break;
                 case JumpState.Landed:
+                    animator.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
                     jumpState = JumpState.Grounded;
                     break;
             }
@@ -119,14 +120,6 @@ namespace Platformer.Mechanics
             Jumping,
             InFlight,
             Landed
-        }
-
-        // TODO to check
-        public enum TokenSpriteType
-        {
-            SpriteNormal,
-            SpriteToken10,
-            SpriteToken20
         }
     }
 }

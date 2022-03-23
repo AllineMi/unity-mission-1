@@ -77,12 +77,18 @@ namespace Platformer.Gameplay
                 }
                 case VictoryCondition.Token:
                 {
-                    var pvr = Schedule<PlayerVictoryTokenRun>();
+                    var pv = Schedule<PlayerVictory>();
+                    pv.victoryZone = victoryZone;
+
+                    var pvt = Schedule<FriendVictoryJump>(2f);
+                    pvt.victoryZone = victoryZone;
+
+                    // For some reason, we are unable to get player from the victoryZone
+                    // forcing us to pass it manually here.
+                    // There must be away around, but I will not look at it now.
+                    var pvr = Schedule<PlayerVictoryRun>(2.90f);
                     pvr.victoryZone = victoryZone;
-                    // var pv = Schedule<PlayerVictory>();
-                    // pv.victoryZone = victoryZone;
-                    // var pvr = Schedule<PlayerVictoryTokenRun>(3f);
-                    // pvr.victoryZone = victoryZone;
+                    pvr.player = player;
                     break;
                 }
                 case VictoryCondition.Shortcut:

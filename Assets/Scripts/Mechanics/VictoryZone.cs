@@ -18,8 +18,6 @@ namespace Platformer.Mechanics
             if (rb == null) return;
 
             player = rb.GetComponent<PlayerController>();
-            if (friend == null) Debug.Log($"VictoryZone: Friend is NULL");
-            if (player == null) Debug.Log($"VictoryZone: Player is NULL");
 
             if (player == null) return;
             var ev = Schedule<PlayerEnteredVictoryZone>();
