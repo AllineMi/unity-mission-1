@@ -4,8 +4,8 @@ using UnityEngine;
 namespace Platformer.Model
 {
     /// <summary>
-    /// The main model containing needed data to implement a platformer style 
-    /// game. This class should only contain data, and methods that operate 
+    /// The main model containing needed data to implement a platformer style
+    /// game. This class should only contain data, and methods that operate
     /// on the data. It is initialised with data in the GameController class.
     /// </summary>
     [System.Serializable]
@@ -17,11 +17,17 @@ namespace Platformer.Model
         public Cinemachine.CinemachineVirtualCamera virtualCamera;
 
         /// <summary>
-        /// The main component which controls the player sprite, controlled 
+        /// The main component which controls the player sprite, controlled
         /// by the user.
         /// </summary>
         public PlayerController player;
-        
+
+        /// <summary>
+        /// The main component which controls the friend sprite, controlled
+        /// by the user.
+        /// </summary>
+        public FriendController friend;
+
         /// <summary>
         /// The spawn point in the scene.
         /// </summary>
@@ -33,7 +39,7 @@ namespace Platformer.Model
         public float jumpModifier = 1.5f;
 
         /// <summary>
-        /// A global jump modifier applied to slow down an active jump when 
+        /// A global jump modifier applied to slow down an active jump when
         /// the user releases the jump input.
         /// </summary>
         public float jumpDeceleration = 0.5f;

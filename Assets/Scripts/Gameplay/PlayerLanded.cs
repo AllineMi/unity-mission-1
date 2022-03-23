@@ -10,6 +10,7 @@ namespace Platformer.Gameplay
     public class PlayerLanded : Simulation.Event<PlayerLanded>
     {
         public PlayerController player;
+        public FriendController friend;
 
         public override void Execute()
         {

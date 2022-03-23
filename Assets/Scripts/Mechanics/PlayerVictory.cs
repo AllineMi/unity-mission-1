@@ -6,7 +6,7 @@ namespace Platformer.Mechanics
     {
         public VictoryZone victoryZone;
         private PlayerController player;
-        private PlayerController friend;
+        private FriendController friend;
 
         public override void Execute()
         {

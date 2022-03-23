@@ -13,28 +13,58 @@ namespace Platformer.Gameplay
     public class PlayerEnteredVictoryZone : Event<PlayerEnteredVictoryZone>
     {
         readonly PlatformerModel model = Simulation.GetModel<PlatformerModel>();
-        
+
         public VictoryZone victoryZone;
         private PlayerController player;
-        private PlayerController friend;
+        private FriendController friend;
 
+        private bool colletedAllTokens;
         private VictoryCondition victoryCondition;
-        public bool shortcutActivate = false;
-        
+        private bool shortcutActivateDeactivated = true;
+
         public override void Execute()
         {
             player = victoryZone.player;
             friend = victoryZone.friend;
+            if (player.token.currentToken >= 20) colletedAllTokens = true;
             player.controlEnabled = false;
             model.virtualCamera.enabled = false;
-            
-            if (friend == null || player == null) Debug.Log($"Friend or Player is NULL");
+
+            if (friend == null) Debug.Log($"PlayerEnteredVictoryZone: Friend is NULL");
+            if (player == null) Debug.Log($"PlayerEnteredVictoryZone: Player is NULL");
             CheckVictoryCondition();
             Celebrate();
         }
 
+        void CheckVictoryCondition()
+        {
+            // no shortcut, no token, no flower
+            if (shortcutActivateDeactivated && !colletedAllTokens)
+            {
+                victoryCondition = VictoryCondition.Default;
+            }
+
+            // no shortcut, yes token, no flower
+            if (shortcutActivateDeactivated && colletedAllTokens)
+            {
+                victoryCondition = VictoryCondition.Token;
+            }
+
+            //victoryCondition = shortcutActivate == false ? VictoryCondition.Default : VictoryCondition.Shortcut;
+            //
+            // // "yes shortcut, no token"
+            // if (shortcutActivate && player.token.currentToken < 20) victoryCondition = VictoryCondition.Shortcut;
+            // // "yes shortcut, yes token"
+            // if (!shortcutActivate || player.token.currentToken == 20) victoryCondition = VictoryCondition.TokenShortcut;
+            //
+            // if (player.token.currentToken < 20) victoryCondition = shortcutActivate == false ? VictoryCondition.Default : VictoryCondition.Shortcut;
+
+            // if (player.token.currentToken == 20) victoryCondition = shortcutActivate == false ? VictoryCondition.Token : VictoryCondition.TokenShortcut;
+        }
+
         private void Celebrate()
         {
+            Debug.Log($"PlayerEnteredVictoryZone: victoryCondition {victoryCondition}");
             switch (victoryCondition)
             {
                 case VictoryCondition.Default:
@@ -45,12 +75,25 @@ namespace Platformer.Gameplay
                     pvr.victoryZone = victoryZone;
                     break;
                 }
-                case VictoryCondition.Shortcut:
-                {
-                    break;
-                }
                 case VictoryCondition.Token:
                 {
+                    var pv = Schedule<PlayerVictory>();
+                    pv.victoryZone = victoryZone;
+
+                    var pvt = Schedule<FriendVictoryJump>(2f);
+                    pvt.victoryZone = victoryZone;
+
+                    // For some reason, we are unable to get player from the victoryZone
+                    // forcing us to pass it manually here.
+                    // There must be away around, but I will not look at it now.
+                    var pvr = Schedule<PlayerVictoryRun>(2.90f);
+                    pvr.victoryZone = victoryZone;
+                    pvr.player = player;
+                    break;
+                }
+                case VictoryCondition.Shortcut:
+                {
+                    // TODO use playerRigidBody.rotation = 50f; to make seem that is running away
                     break;
                 }
                 case VictoryCondition.TokenShortcut:
@@ -58,12 +101,6 @@ namespace Platformer.Gameplay
                     break;
                 }
             }
-        }
-
-        void CheckVictoryCondition()
-        {
-            if (player.token.currentToken < 20) victoryCondition = shortcutActivate == false ? VictoryCondition.Default : VictoryCondition.Shortcut;
-            if (player.token.currentToken == 20) victoryCondition = shortcutActivate == false ? VictoryCondition.Token : VictoryCondition.TokenShortcut;
         }
 
         private enum VictoryCondition

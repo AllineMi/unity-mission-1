@@ -1,8 +1,6 @@
 ﻿using Platformer.Core;
-using Platformer.Gameplay;
 using Platformer.Model;
 using UnityEngine;
-using static Platformer.Core.Simulation;
 
 namespace Platformer.Mechanics
 {
@@ -17,26 +15,25 @@ namespace Platformer.Mechanics
         public int maxToken = 20;
         public int currentToken;
         protected internal bool allTokensCollected = false;
-        
+
         /// <summary>
         /// Increment the Token of the entity.
         /// </summary>
         public void Increment()
         {
             currentToken = Mathf.Clamp(currentToken + 1, 0, maxToken);
-            Debug.Log($"Token.cs - Current Token: {currentToken}");
             if (currentToken == 20)
             {
                 BecomeRounder();
             }
         }
-        
+
         public void BecomeRounder()
         {
             PlatformerModel model = Simulation.GetModel<PlatformerModel>();
             PlayerController player = model.player;
             if (currentToken != 20) return;
-            
+
             allTokensCollected = true;
             player.animator.runtimeAnimatorController = player.playerControllerTokens;
         }

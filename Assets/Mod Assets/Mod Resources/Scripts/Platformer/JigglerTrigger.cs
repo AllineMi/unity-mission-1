@@ -6,6 +6,7 @@ public class JigglerTrigger : MonoBehaviour
     //TODO to act only if a specific object enters the trigger
     private static float jPower;
 
+// test
     protected virtual void Awake()
     {
         jPower = GetComponent<Jiggler>().power;

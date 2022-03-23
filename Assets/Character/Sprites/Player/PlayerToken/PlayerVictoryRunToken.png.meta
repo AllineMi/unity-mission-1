@@ -1,0 +1,592 @@
+fileFormatVersion: 2
+guid: 56015c0b92361984b911c0e11691f7f0
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5169020603591874915
+    second: PlayerVictoryRunToken_0
+  - first:
+      213: -1987574114739624072
+    second: PlayerVictoryRunToken_1
+  - first:
+      213: -1416376869840197238
+    second: PlayerVictoryRunToken_2
+  - first:
+      213: 1900847035137280264
+    second: PlayerVictoryRunToken_3
+  - first:
+      213: -1297071729169335416
+    second: PlayerVictoryRunToken_4
+  - first:
+      213: -3725858875049880798
+    second: PlayerVictoryRunToken_5
+  - first:
+      213: -8271717204464040564
+    second: PlayerVictoryRunToken_6
+  - first:
+      213: 4412913158698729218
+    second: PlayerVictoryRunToken_7
+  - first:
+      213: 7686304104264442687
+    second: PlayerVictoryRunToken_8
+  - first:
+      213: 3466219840840918868
+    second: PlayerVictoryRunToken_9
+  - first:
+      213: 16511153579355145
+    second: PlayerVictoryRunToken_10
+  - first:
+      213: 2503710360527586207
+    second: PlayerVictoryRunToken_11
+  - first:
+      213: 1396850661674402725
+    second: PlayerVictoryRunToken_12
+  - first:
+      213: 1107856036124223128
+    second: PlayerVictoryRunToken_13
+  - first:
+      213: -3545878347502930756
+    second: PlayerVictoryRunToken_14
+  - first:
+      213: -3534197460362228921
+    second: PlayerVictoryRunToken_15
+  - first:
+      213: -828803984803434241
+    second: PlayerVictoryRunToken_16
+  - first:
+      213: 7852531549904793918
+    second: PlayerVictoryRunToken_17
+  - first:
+      213: 8560695091804385050
+    second: PlayerVictoryRunToken_18
+  - first:
+      213: 5409399435577011749
+    second: PlayerVictoryRunToken_19
+  - first:
+      213: 6197067900713290914
+    second: PlayerVictoryRunToken_20
+  - first:
+      213: 338083255119004007
+    second: PlayerVictoryRunToken_21
+  - first:
+      213: -480397158011908579
+    second: PlayerVictoryRunToken_22
+  - first:
+      213: 62641158555733786
+    second: PlayerVictoryRunToken_23
+  - first:
+      213: 7609746749787870260
+    second: PlayerVictoryRunToken_24
+  - first:
+      213: -5310563121555135064
+    second: PlayerVictoryRunToken_25
+  - first:
+      213: 3174740218732492405
+    second: PlayerVictoryRunToken_26
+  - first:
+      213: 1331562360359209633
+    second: PlayerVictoryRunToken_27
+  - first:
+      213: 499537719533033619
+    second: PlayerVictoryRunToken_28
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: PlayerVictoryRunToken_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 252
+        width: 126
+        height: 126
+      alignment: 9
+      pivot: {x: 0.51987725, y: 0.48012266}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d962b3ec523f348b0800000000000000
+      internalID: -5169020603591874915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerVictoryRunToken_1
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 252
+        width: 126
+        height: 126
+      alignment: 9
+      pivot: {x: 0.512507, y: 0.47177196}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 877ee2e8fd7ba64e0800000000000000
+      internalID: -1987574114739624072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerVictoryRunToken_2
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 252
+        width: 126
+        height: 126
+      alignment: 9
+      pivot: {x: 0.5004931, y: 0.47239977}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a89681dbdb4085ce0800000000000000
+      internalID: -1416376869840197238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerVictoryRunToken_3
+      rect:
+        serializedVersion: 2
+        x: 378
+        y: 252
+        width: 126
+        height: 126
+      alignment: 9
+      pivot: {x: 0.48817152, y: 0.4724}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80946bdae4a216a10800000000000000
+      internalID: 1900847035137280264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerVictoryRunToken_4
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 252
+        width: 126
+        height: 126
+      alignment: 9
+      pivot: {x: 0.4802309, y: 0.4802309}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88bf8ae6220effde0800000000000000
+      internalID: -1297071729169335416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerVictoryRunToken_5
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 252
+        width: 126
+        height: 126
+      alignment: 9
+      pivot: {x: 0.4724431, y: 0.48741972}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2235a65f7171b4cc0800000000000000
+      internalID: -3725858875049880798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerVictoryRunToken_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 126
+        width: 126
+        height: 126
+      alignment: 9
+      pivot: {x: 0.47232524, y: 0.5039536}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c850f692705f43d80800000000000000
+      internalID: -8271717204464040564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerVictoryRunToken_7
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 126
+        width: 126
+        height: 126
+      alignment: 9
+      pivot: {x: 0.4725543, y: 0.5116899}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20f72e02321dd3d30800000000000000
+      internalID: 4412913158698729218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerVictoryRunToken_8
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 126
+        width: 126
+        height: 126
+      alignment: 9
+      pivot: {x: 0.4806865, y: 0.5193139}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f332f4aebdc3baa60800000000000000
+      internalID: 7686304104264442687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerVictoryRunToken_9
+      rect:
+        serializedVersion: 2
+        x: 378
+        y: 126
+        width: 126
+        height: 126
+      alignment: 9
+      pivot: {x: 0.48861793, y: 0.5275569}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 457ebb6949c7a1030800000000000000
+      internalID: 3466219840840918868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerVictoryRunToken_10
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 126
+        width: 126
+        height: 126
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5275569}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90cede38ec8aa3000800000000000000
+      internalID: 16511153579355145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerVictoryRunToken_11
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 126
+        width: 126
+        height: 126
+      alignment: 9
+      pivot: {x: 0.5125805, y: 0.5269579}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9346b3ce47feb220800000000000000
+      internalID: 2503710360527586207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerVictoryRunToken_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 126
+        height: 126
+      alignment: 9
+      pivot: {x: 0.5201567, y: 0.5198119}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -2, y: -23}
+        - {x: 9, y: -23}
+        - {x: 10, y: -22}
+        - {x: 14, y: -22}
+        - {x: 15, y: -21}
+        - {x: 17, y: -23}
+        - {x: 26, y: -23}
+        - {x: 28, y: -21}
+        - {x: 28, y: -10}
+        - {x: 27, y: -9}
+        - {x: 27, y: -6}
+        - {x: 28, y: -5}
+        - {x: 28, y: 10}
+        - {x: 27, y: 11}
+        - {x: 27, y: 14}
+        - {x: 29, y: 17}
+        - {x: 29, y: 21}
+        - {x: 28, y: 22}
+        - {x: 28, y: 26}
+        - {x: 26, y: 28}
+        - {x: 17, y: 29}
+        - {x: 15, y: 27}
+        - {x: 11, y: 27}
+        - {x: 10, y: 28}
+        - {x: -2, y: 28}
+        - {x: -3, y: 29}
+        - {x: -3, y: 34}
+        - {x: -10, y: 41}
+        - {x: -16, y: 42}
+        - {x: -17, y: 41}
+        - {x: -21, y: 40}
+        - {x: -24, y: 37}
+        - {x: -24, y: 36}
+        - {x: -26, y: 34}
+        - {x: -26, y: 27}
+        - {x: -25, y: 26}
+        - {x: -25, y: 24}
+        - {x: -22, y: 21}
+        - {x: -32, y: 21}
+        - {x: -36, y: 18}
+        - {x: -37, y: 18}
+        - {x: -41, y: 15}
+        - {x: -45, y: 6}
+        - {x: -45, y: -1}
+        - {x: -44, y: -2}
+        - {x: -43, y: -6}
+        - {x: -35, y: -14}
+        - {x: -31, y: -15}
+        - {x: -30, y: -16}
+        - {x: -22, y: -16}
+        - {x: -25, y: -19}
+        - {x: -25, y: -21}
+        - {x: -26, y: -22}
+        - {x: -26, y: -29}
+        - {x: -22, y: -35}
+        - {x: -17, y: -36}
+        - {x: -16, y: -37}
+        - {x: -10, y: -36}
+        - {x: -4, y: -30}
+        - {x: -4, y: -27}
+        - {x: -2, y: -25}
+      physicsShape: []
+      tessellationDetail: 1
+      bones: []
+      spriteID: 5a34f55a64c926310800000000000000
+      internalID: 1396850661674402725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerVictoryRunToken_13
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 0
+        width: 126
+        height: 126
+      alignment: 9
+      pivot: {x: 0.52792114, y: 0.51171994}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 896e477f135ef5f00800000000000000
+      internalID: 1107856036124223128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerVictoryRunToken_14
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 0
+        width: 126
+        height: 126
+      alignment: 9
+      pivot: {x: 0.5277189, y: 0.49560556}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb4b6580e628acec0800000000000000
+      internalID: -3545878347502930756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerVictoryRunToken_15
+      rect:
+        serializedVersion: 2
+        x: 378
+        y: 0
+        width: 126
+        height: 126
+      alignment: 9
+      pivot: {x: 0.52805704, y: 0.48816878}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74b8501822204fec0800000000000000
+      internalID: -3534197460362228921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
