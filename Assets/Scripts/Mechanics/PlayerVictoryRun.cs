@@ -7,7 +7,7 @@ namespace Platformer.Mechanics
     {
         public VictoryZone victoryZone;
         private PlayerController player;
-        private PlayerController friend;
+        private FriendController friend;
 
         public override void Execute()
         {
@@ -25,7 +25,6 @@ namespace Platformer.Mechanics
             Rigidbody2D friendRigidBody = friend.animator.GetComponent<Rigidbody2D>();
             playerRigidBody.velocity = new Vector2(2f, 0f);
             friendRigidBody.velocity = new Vector2(2f, 0f);
-
         }
     }
 }

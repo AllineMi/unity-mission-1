@@ -1,5 +1,6 @@
 using Platformer.Core;
 using Platformer.Mechanics;
+using UnityEngine;
 
 namespace Platformer.Gameplay
 {
@@ -10,11 +11,22 @@ namespace Platformer.Gameplay
     public class PlayerJumped : Simulation.Event<PlayerJumped>
     {
         public PlayerController player;
+        public FriendController friend;
 
         public override void Execute()
         {
-            if (player.audioSource && player.jumpAudio)
-                player.audioSource.PlayOneShot(player.jumpAudio);
+            if (player != null)
+            {
+                Debug.Log($"PlayerJumped: player null");
+                if (player.audioSource && player.jumpAudio)
+                    player.audioSource.PlayOneShot(player.jumpAudio);
+            }
+            if (friend != null)
+            {
+                Debug.Log($"PlayerJumped: friend null");
+                if (friend.audioSource && friend.jumpAudio)
+                    friend.audioSource.PlayOneShot(friend.jumpAudio);
+            }
         }
     }
 }

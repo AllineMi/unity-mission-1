@@ -10,6 +10,7 @@ namespace Platformer.Gameplay
     public class PlayerStopJump : Simulation.Event<PlayerStopJump>
     {
         public PlayerController player;
+        public FriendController friend;
 
         public override void Execute()
         {

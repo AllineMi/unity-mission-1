@@ -10,13 +10,17 @@ namespace Platformer.Mechanics
     public class VictoryZone : MonoBehaviour
     {
         public PlayerController player;
-        public PlayerController friend;
+        public FriendController friend;
 
         void OnTriggerEnter2D(Collider2D other)
         {
             var rb = other.attachedRigidbody;
             if (rb == null) return;
+
             player = rb.GetComponent<PlayerController>();
+            if (friend == null) Debug.Log($"VictoryZone: Friend is NULL");
+            if (player == null) Debug.Log($"VictoryZone: Player is NULL");
+
             if (player == null) return;
             var ev = Schedule<PlayerEnteredVictoryZone>();
             ev.victoryZone = this;
