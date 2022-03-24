@@ -11,6 +11,7 @@ namespace Platformer.Gameplay
     {
         public PlayerController player;
         public FriendController friend;
+        public BigBossController bigBoss;
 
         public override void Execute()
         {
@@ -24,6 +25,12 @@ namespace Platformer.Gameplay
             {
                 if (friend.audioSource && friend.jumpAudio)
                     friend.audioSource.PlayOneShot(friend.jumpAudio);
+            }
+
+            if (bigBoss != null)
+            {
+                if (bigBoss.audioSource && bigBoss.jumpAudio)
+                    bigBoss.audioSource.PlayOneShot(bigBoss.jumpAudio);
             }
         }
     }

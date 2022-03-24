@@ -1,6 +1,4 @@
-using Platformer.Core;
 using Platformer.Gameplay;
-using Platformer.Model;
 using UnityEngine;
 using static Platformer.Core.Simulation;
 
@@ -17,7 +15,7 @@ namespace Platformer.Mechanics
         public int maxHP = 10;
 
         public int currentHP;
-        
+
         /// <summary>
         /// Indicates if the entity should be considered 'alive'.
         /// </summary>
@@ -30,7 +28,7 @@ namespace Platformer.Mechanics
         {
             Decrement();
         }
-        
+
         /// <summary>
         /// Decrement the HP of the entitiy until HP reaches 0.
         /// </summary>
@@ -38,7 +36,7 @@ namespace Platformer.Mechanics
         {
             while (currentHP > 0) Decrement();
         }
-        
+
         /// <summary>
         /// Increment the HP of the entity.
         /// </summary>
@@ -60,11 +58,8 @@ namespace Platformer.Mechanics
                 var ev = Schedule<HealthIsZero>();
                 ev.health = this;
             }
-            Debug.Log($"Health.cs - Current HP: {currentHP}");
-        }
 
-        void Awake()
-        {
+            Debug.Log($"Health.cs - Current HP: {currentHP}");
         }
     }
 }

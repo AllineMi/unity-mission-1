@@ -14,11 +14,15 @@ namespace Platformer.Mechanics
     {
         public AudioClip jumpAudio;
         public AudioClip respawnAudio;
+
         public AudioClip ouchAudio;
-        /*internal new*/ public AudioSource audioSource;
+
+        /*internal new*/
+        public AudioSource audioSource;
 
         /// <summary> Initial jump velocity at the start of a jump. </summary>
         public float jumpTakeOffSpeed = 7;
+
         public JumpState jumpState = JumpState.Grounded;
         private bool stopJump;
         bool jump;
@@ -30,6 +34,7 @@ namespace Platformer.Mechanics
 
         /// <summary> Max horizontal speed of the player. </summary>
         public float maxSpeed = 7;
+
         Vector2 move;
         public bool controlEnabled = true;
         public SpriteRenderer spriteRenderer;
@@ -42,6 +47,7 @@ namespace Platformer.Mechanics
         //public int tokensCollected = 0;
         public Token token;
         public RuntimeAnimatorController playerControllerTokens;
+        public bool scared = false;
 
         void Awake()
         {
@@ -102,7 +108,14 @@ namespace Platformer.Mechanics
 
                     break;
                 case JumpState.Landed:
+                    Debug.Log($"player landed");
                     jumpState = JumpState.Grounded;
+                    if (scared == true)
+                    {
+                        animator.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
+                        scared = false;
+                    }
+
                     break;
             }
         }

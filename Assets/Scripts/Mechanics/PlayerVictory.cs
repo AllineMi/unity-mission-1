@@ -2,7 +2,7 @@
 
 namespace Platformer.Mechanics
 {
-    public class PlayerVictory  : Simulation.Event<PlayerVictory>
+    public class PlayerVictory : Simulation.Event<PlayerVictory>
     {
         public VictoryZone victoryZone;
         private PlayerController player;

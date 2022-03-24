@@ -13,8 +13,6 @@ namespace Platformer.Mechanics
     public class FriendController : KinematicObject
     {
         public AudioClip jumpAudio;
-
-        /*internal new*/
         public AudioSource audioSource;
 
         /// <summary> Initial jump velocity at the start of a jump. </summary>

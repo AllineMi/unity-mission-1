@@ -6,7 +6,7 @@ using static Platformer.Core.Simulation;
 public class TeleportPad : MonoBehaviour
 {
     public Rigidbody2D destinationPad;
-    
+
     [Tooltip("Check it if you want this pad to be used only as a destination and never .the only one enabled.")]
     public bool disableDepartures;
     [HideInInspector]
@@ -25,7 +25,7 @@ public class TeleportPad : MonoBehaviour
         ev.destinationPad = destinationPad;
         ev.playerController = player;
     }
-    
+
     private void OnTriggerExit2D(Collider2D other)
     {
         GetPlayerController(other);
