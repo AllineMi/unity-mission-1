@@ -16,26 +16,22 @@ namespace Platformer.Mechanics
         public AudioClip respawnAudio;
 
         public AudioClip ouchAudio;
-
-        /*internal new*/
         public AudioSource audioSource;
 
         /// <summary> Initial jump velocity at the start of a jump. </summary>
-        public float jumpTakeOffSpeed = 7;
+        private float jumpTakeOffSpeed = 7;
 
         public JumpState jumpState = JumpState.Grounded;
         private bool stopJump;
-        bool jump;
+        private bool jump;
 
-        /*internal new*/
         public Collider2D collider2d;
-
         public Health health;
 
         /// <summary> Max horizontal speed of the player. </summary>
         public float maxSpeed = 7;
 
-        Vector2 move;
+        private Vector2 move;
         public bool controlEnabled = true;
         public SpriteRenderer spriteRenderer;
         internal Animator animator;
@@ -49,13 +45,7 @@ namespace Platformer.Mechanics
         public RuntimeAnimatorController playerControllerTokens;
 
         // SCARED
-        public bool scared;
-        private bool isInScaredLoop;
-        Vector3 initialScaredPosition;
-
-        private float timer = 0.0f;
-        private float duration = 20f;
-
+        internal bool scared;
 
         void Awake()
         {
@@ -85,7 +75,7 @@ namespace Platformer.Mechanics
                 move.x = 0;
             }
 
-            if (scared && !controlEnabled)
+            if (scared && !controlEnabled && jumpState == JumpState.PrepareToJump)
             {
                 JumpScare();
             }
@@ -96,36 +86,9 @@ namespace Platformer.Mechanics
 
         private void JumpScare()
         {
-            Transform transformPosition = transform;
-            if (!isInScaredLoop)
-            {
-                initialScaredPosition = transform.position;
-                isInScaredLoop = true;
-            }
-
-            if (!isInScaredLoop) return;
-
-            var positionX = initialScaredPosition.x;
-            var positionY = initialScaredPosition.y;
-            var positionZ = initialScaredPosition.z;
-
-            var finalPosition = new Vector3(positionX + 2, positionY, positionZ);
-
-            if (transform.position.x < finalPosition.x)
-            {
-                Debug.Log($"transform.position.x < finalPosition.x:");
-                timer += Time.deltaTime;
-                float fractionOfJourney = timer / duration;
-
-                // For Position
-                transformPosition.position = Vector3.Lerp(transformPosition.position, finalPosition,
-                    fractionOfJourney);
-            }
-            else
-            {
-                isInScaredLoop = false;
-            }
-
+            jumpTakeOffSpeed = 1f;
+            animator.GetComponent<Rigidbody2D>().velocity = new Vector2(5f, 0f);
+            jump = false;
         }
 
         public void FlipPlayerX()
@@ -134,43 +97,47 @@ namespace Platformer.Mechanics
         }
 
         void UpdateJumpState()
+        {
+            jump = false;
+            switch (jumpState)
             {
-                jump = false;
-                switch (jumpState)
-                {
-                    case JumpState.PrepareToJump:
-                        jumpState = JumpState.Jumping;
-                        jump = true;
-                        stopJump = false;
-                        break;
-                    case JumpState.Jumping:
-                        if (!IsGrounded)
-                        {
-                            Schedule<PlayerJumped>().player = this;
-                            jumpState = JumpState.InFlight;
-                        }
+                case JumpState.PrepareToJump:
+                    jumpState = JumpState.Jumping;
+                    jump = true;
+                    stopJump = false;
+                    break;
+                case JumpState.Jumping:
+                    if (!IsGrounded)
+                    {
+                        Schedule<PlayerJumped>().player = this;
+                        jumpState = JumpState.InFlight;
+                    }
 
-                        break;
-                    case JumpState.InFlight:
-                        if (IsGrounded)
-                        {
-                            Schedule<PlayerLanded>().player = this;
-                            jumpState = JumpState.Landed;
-                        }
-
-                        break;
-                    case JumpState.Landed:
-                        //Debug.Log($"player landed");
-                        jumpState = JumpState.Grounded;
-                        if (scared)
-                        {
-                            animator.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
-                            scared = false;
-                        }
-
-                        break;
-                }
+                    break;
+                case JumpState.InFlight:
+                    if (IsGrounded)
+                    {
+                        Schedule<PlayerLanded>().player = this;
+                        jumpState = JumpState.Landed;
+                    }
+                    break;
+                case JumpState.Landed:
+                    jumpState = JumpState.Grounded;
+                    if (scared)
+                    {
+                        animator.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
+                        scared = false;
+                        Schedule<EnablePlayerInput>(2f);
+                        ResetPlayerTakeOffSpeed();
+                    }
+                    break;
             }
+        }
+
+        void ResetPlayerTakeOffSpeed()
+        {
+            jumpTakeOffSpeed = 7f;
+        }
 
         protected override void ComputeVelocity()
         {

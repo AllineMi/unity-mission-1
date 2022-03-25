@@ -18,7 +18,6 @@ namespace Platformer.Mechanics
             {
                 player.controlEnabled = false;
                 player.collider2d.enabled = false;
-                player.spriteRenderer.enabled = false;
                 player.spriteRenderer.flipX = false;
 
                 shortcutActivated = true;

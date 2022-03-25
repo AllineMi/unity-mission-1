@@ -13,7 +13,7 @@ namespace Platformer.Gameplay
 
         public override void Execute()
         {
-            player.spriteRenderer.enabled = true;
+
             player.collider2d.enabled = true;
         }
     }

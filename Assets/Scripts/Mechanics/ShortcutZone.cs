@@ -12,7 +12,7 @@ namespace Platformer.Mechanics
     {
         public PlayerController player;
         public BigBossController bigBoss;
-
+        private bool jumpScaredRan;
 
         void OnTriggerEnter2D(Collider2D other)
         {
@@ -41,8 +41,9 @@ namespace Platformer.Mechanics
                 bbb.shortcutZone = this;
             }
 
-            if (bigBoss.canBecomeBigger && player.scared == false)
+            if (bigBoss.canBecomeBigger && player.scared == false && jumpScaredRan == false)
             {
+                jumpScaredRan = true;
                 var ps = Schedule<PlayerScared>();
                 ps.shortcutZone = this;
             }

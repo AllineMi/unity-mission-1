@@ -5,10 +5,10 @@ namespace Platformer.Mechanics
 {
     public class BigBossJump : Event<BigBossJump>
     {
-        private float bigBossJumpVelocity = 5f;
         public ShortcutZone shortcutZone;
         private BigBossController bigBoss;
         private Rigidbody2D bigBossRigidBody;
+        private float bigBossJumpVelocity = 5f;
 
         public override void Execute()
         {

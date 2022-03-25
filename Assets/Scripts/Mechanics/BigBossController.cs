@@ -26,7 +26,7 @@ namespace Platformer.Mechanics
 
         Vector2 move;
         public SpriteRenderer spriteRenderer;
-        internal Animator animator;
+        private Animator animator;
         readonly PlatformerModel model = Simulation.GetModel<PlatformerModel>();
 
         public Bounds Bounds => collider2d.bounds;
