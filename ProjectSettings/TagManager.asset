@@ -5,12 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - TutorialRequirement
-  - Friend
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 1
+  - 
   - Water
   - UI
   - 

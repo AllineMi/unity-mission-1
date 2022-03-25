@@ -1,12 +1,11 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 
 public class SimpleTrigger : MonoBehaviour
 {
-    public Rigidbody2D triggerBody; 
+    public Rigidbody2D triggerBody;
     public UnityEvent onTriggerEnter;
-    
+
     void OnTriggerEnter2D(Collider2D other){
         //do not trigger if there's no trigger target object
         if (triggerBody == null) return;
@@ -17,5 +16,4 @@ public class SimpleTrigger : MonoBehaviour
             onTriggerEnter.Invoke();
         }
     }
-
 }
