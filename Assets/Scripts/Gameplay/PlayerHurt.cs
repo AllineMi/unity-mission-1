@@ -16,7 +16,7 @@ namespace Platformer.Gameplay
         public override void Execute()
         {
             var player = model.player;
-            
+
             if (player.health.IsAlive)
             {
                 player.health.Hurt();
@@ -28,9 +28,9 @@ namespace Platformer.Gameplay
                 if (player.audioSource && player.ouchAudio)
                     player.audioSource.PlayOneShot(player.ouchAudio);
                 player.animator.SetTrigger("hurt");
-                
+
                 TeleportPlayerHurtPosition(player);
-                
+
                 Simulation.Schedule<EnablePlayerInput>(1f);
             }
         }

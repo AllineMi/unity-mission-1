@@ -9,10 +9,9 @@ public class TeleportPad : MonoBehaviour
 
     [Tooltip("Check it if you want this pad to be used only as a destination and never .the only one enabled.")]
     public bool disableDepartures;
-    [HideInInspector]
-    public PlayerController player;
-    [HideInInspector]
-    public bool isDestination;
+
+    [HideInInspector] public PlayerController player;
+    [HideInInspector] public bool isDestination;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -39,7 +38,9 @@ public class TeleportPad : MonoBehaviour
     private void GetPlayerController(Collider2D other)
     {
         //       if this                               do this                                                   else do this
-        player = other.gameObject.CompareTag("Player") ? other.attachedRigidbody.GetComponent<PlayerController>() : null;
+        player = other.gameObject.CompareTag("Player")
+            ? other.attachedRigidbody.GetComponent<PlayerController>()
+            : null;
     }
 
     private void UnlockDestination()

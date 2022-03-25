@@ -3,15 +3,15 @@ using Platformer.Core;
 using Platformer.Gameplay;
 using Platformer.Model;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 namespace Platformer.Mechanics
 {
-    [RequireComponent(typeof(AnimationController), typeof(Collider2D))]
+    [RequireComponent(typeof(Collider2D))]
     public class BigBossController : KinematicObject
     {
         public AudioClip jumpAudio;
         public AudioSource audioSource;
+        public Vector3 defaultPosition = new Vector3(-10.6068935f, -12.643858f, -0.401916862f);
 
         /// <summary> Initial jump velocity at the start of a jump. </summary>
         public float jumpTakeOffSpeed = 5;
@@ -27,12 +27,12 @@ namespace Platformer.Mechanics
         Vector2 move;
         public SpriteRenderer spriteRenderer;
         internal Animator animator;
-
         readonly PlatformerModel model = Simulation.GetModel<PlatformerModel>();
 
         public Bounds Bounds => collider2d.bounds;
-        public RuntimeAnimatorController BigBossBigger;
-        public bool getBigger = false;
+        public bool canBecomeBigger;
+        private float timer = 0.0f;
+        private float duration = 20f;
 
         void Awake()
         {
@@ -50,8 +50,45 @@ namespace Platformer.Mechanics
                 jump = false;
             }
 
+            if (canBecomeBigger)
+            {
+                BecomeBigger();
+            }
+
             UpdateJumpState();
             base.Update();
+        }
+
+        public void StopMoving()
+        {
+            velocity = new Vector2(0f, 0f);
+        }
+
+        private void BecomeBigger()
+        {
+            Transform transformScalePosition = transform;
+
+            var finalPosition = new Vector3(-6.106885f, -10.90f, -0.4019169f);
+            var finalScale = new Vector3(6, 6, 6);
+
+            if (transformScalePosition.localScale.y < 6f)
+            {
+                timer += Time.deltaTime;
+                float fractionOfJourney = timer / duration;
+
+                // For Position
+                transformScalePosition.position = Vector3.Lerp(transformScalePosition.position, finalPosition,
+                    fractionOfJourney);
+
+                // For Scale
+                transformScalePosition.localScale = Vector3.Lerp(transformScalePosition.localScale, finalScale,
+                    fractionOfJourney);
+            }
+            else
+            {
+                canBecomeBigger = false;
+                timer = 0.0f;
+            }
         }
 
         void UpdateJumpState()
@@ -82,8 +119,6 @@ namespace Platformer.Mechanics
                     break;
                 case JumpState.Landed:
                     animator.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
-                    Debug.Log($"landed");
-                    Debug.Log($"jump {jump}");
                     jumpState = JumpState.Grounded;
                     break;
             }

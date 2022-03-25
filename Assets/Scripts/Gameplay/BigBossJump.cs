@@ -5,19 +5,17 @@ namespace Platformer.Mechanics
 {
     public class BigBossJump : Event<BigBossJump>
     {
+        private float bigBossJumpVelocity = 5f;
         public ShortcutZone shortcutZone;
         private BigBossController bigBoss;
         private Rigidbody2D bigBossRigidBody;
-        public float bigBossJumpVelocity;
 
         public override void Execute()
         {
             bigBoss = shortcutZone.bigBoss;
-            bigBossRigidBody = bigBoss.animator.GetComponent<Rigidbody2D>();
-
-            bigBossRigidBody.velocity = new Vector2(bigBossJumpVelocity, 0f);
+            bigBossRigidBody = bigBoss.GetComponent<Rigidbody2D>();
             bigBoss.jumpState = BigBossController.JumpState.PrepareToJump;
-            Debug.Log($"BigBossJump: Execute");
+            bigBossRigidBody.velocity = new Vector2(bigBossJumpVelocity, 0f);
         }
     }
 }

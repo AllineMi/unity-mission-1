@@ -47,7 +47,15 @@ namespace Platformer.Mechanics
         //public int tokensCollected = 0;
         public Token token;
         public RuntimeAnimatorController playerControllerTokens;
-        public bool scared = false;
+
+        // SCARED
+        public bool scared;
+        private bool isInScaredLoop;
+        Vector3 initialScaredPosition;
+
+        private float timer = 0.0f;
+        private float duration = 20f;
+
 
         void Awake()
         {
@@ -77,48 +85,92 @@ namespace Platformer.Mechanics
                 move.x = 0;
             }
 
+            if (scared && !controlEnabled)
+            {
+                JumpScare();
+            }
+
             UpdateJumpState();
             base.Update();
         }
 
-        void UpdateJumpState()
+        private void JumpScare()
         {
-            jump = false;
-            switch (jumpState)
+            Transform transformPosition = transform;
+            if (!isInScaredLoop)
             {
-                case JumpState.PrepareToJump:
-                    jumpState = JumpState.Jumping;
-                    jump = true;
-                    stopJump = false;
-                    break;
-                case JumpState.Jumping:
-                    if (!IsGrounded)
-                    {
-                        Schedule<PlayerJumped>().player = this;
-                        jumpState = JumpState.InFlight;
-                    }
-
-                    break;
-                case JumpState.InFlight:
-                    if (IsGrounded)
-                    {
-                        Schedule<PlayerLanded>().player = this;
-                        jumpState = JumpState.Landed;
-                    }
-
-                    break;
-                case JumpState.Landed:
-                    Debug.Log($"player landed");
-                    jumpState = JumpState.Grounded;
-                    if (scared == true)
-                    {
-                        animator.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
-                        scared = false;
-                    }
-
-                    break;
+                initialScaredPosition = transform.position;
+                isInScaredLoop = true;
             }
+
+            if (!isInScaredLoop) return;
+
+            var positionX = initialScaredPosition.x;
+            var positionY = initialScaredPosition.y;
+            var positionZ = initialScaredPosition.z;
+
+            var finalPosition = new Vector3(positionX + 2, positionY, positionZ);
+
+            if (transform.position.x < finalPosition.x)
+            {
+                Debug.Log($"transform.position.x < finalPosition.x:");
+                timer += Time.deltaTime;
+                float fractionOfJourney = timer / duration;
+
+                // For Position
+                transformPosition.position = Vector3.Lerp(transformPosition.position, finalPosition,
+                    fractionOfJourney);
+            }
+            else
+            {
+                isInScaredLoop = false;
+            }
+
         }
+
+        public void FlipPlayerX()
+        {
+            spriteRenderer.flipX = true;
+        }
+
+        void UpdateJumpState()
+            {
+                jump = false;
+                switch (jumpState)
+                {
+                    case JumpState.PrepareToJump:
+                        jumpState = JumpState.Jumping;
+                        jump = true;
+                        stopJump = false;
+                        break;
+                    case JumpState.Jumping:
+                        if (!IsGrounded)
+                        {
+                            Schedule<PlayerJumped>().player = this;
+                            jumpState = JumpState.InFlight;
+                        }
+
+                        break;
+                    case JumpState.InFlight:
+                        if (IsGrounded)
+                        {
+                            Schedule<PlayerLanded>().player = this;
+                            jumpState = JumpState.Landed;
+                        }
+
+                        break;
+                    case JumpState.Landed:
+                        //Debug.Log($"player landed");
+                        jumpState = JumpState.Grounded;
+                        if (scared)
+                        {
+                            animator.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
+                            scared = false;
+                        }
+
+                        break;
+                }
+            }
 
         protected override void ComputeVelocity()
         {

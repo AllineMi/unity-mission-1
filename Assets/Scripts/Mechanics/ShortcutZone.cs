@@ -12,23 +12,21 @@ namespace Platformer.Mechanics
     {
         public PlayerController player;
         public BigBossController bigBoss;
-        private float bigBossJumpVelocity = 13f;
+
 
         void OnTriggerEnter2D(Collider2D other)
         {
-            Debug.Log($"ShortcutZone: {other.gameObject.name}");
+            Debug.Log($"ShortcutZone, Collider: {other.gameObject.name}");
 
             var rb = other.attachedRigidbody;
             if (rb == null) return;
             if (player == null) return;
 
-            if (other.gameObject.CompareTag("Player") && bigBoss.getBigger == false)
+            if (other.gameObject.CompareTag("Player") && bigBoss.canBecomeBigger == false && player.scared == false)
             {
                 var ej = Schedule<BigBossJump>();
                 ej.shortcutZone = this;
-                ej.bigBossJumpVelocity = bigBossJumpVelocity;
             }
-
             // var ev = Schedule<PlayerEnteredShortcutZone>();
             // ev.shortcutZone = this;
         }
@@ -37,15 +35,13 @@ namespace Platformer.Mechanics
         {
             if (bigBoss.jumpState == BigBossController.JumpState.Landed)
             {
-                player.spriteRenderer.flipX = true;
-
-                bigBoss.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0f);
+                player.FlipPlayerX();
                 // TODO add dialogue saying that the monster is not scary. after that, monster gets bigger
-                var bbb = Schedule<BigBossBigger>(1f);
-                bbb.shorcutZone = this;
+                var bbb = Schedule<BigBossBigger>(2f);
+                bbb.shortcutZone = this;
             }
 
-            if (bigBoss.getBigger)
+            if (bigBoss.canBecomeBigger && player.scared == false)
             {
                 var ps = Schedule<PlayerScared>();
                 ps.shortcutZone = this;
