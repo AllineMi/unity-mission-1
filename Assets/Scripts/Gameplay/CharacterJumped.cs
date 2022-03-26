@@ -6,7 +6,6 @@ namespace Platformer.Gameplay
     /// <summary>
     /// Fired when the player performs a Jump.
     /// </summary>
-    /// <typeparam name="CharacterJumped"></typeparam>
     public class CharacterJumped : Simulation.Event<CharacterJumped>
     {
         public PlayerController player;

@@ -6,7 +6,7 @@ AnimatorOverrideController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: FriendOverride
+  m_Name: Friend
   m_Controller: {fileID: 9100000, guid: 84c56aa560eb44c408530bedb67818d5, type: 2}
   m_Clips:
   - m_OriginalClip: {fileID: 7400000, guid: e4a08f6d2d50b4e65b8dc54c2429f307, type: 2}

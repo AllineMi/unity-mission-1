@@ -88,7 +88,7 @@ abstract public class MyCharacterController : KinematicObject
         InFlight,
         Landed
     }
-
+    private int frames = 0;
     protected override void ComputeVelocity()
     {
         if (myJump && IsGrounded)
@@ -109,6 +109,16 @@ abstract public class MyCharacterController : KinematicObject
             spriteRenderer.flipX = false;
         else if (move.x < -0.01f)
             spriteRenderer.flipX = true;
+
+        if (frames % 50 == 0)
+        {
+            Debug.Log($"MyCharacterController move.x: {move.x} #{gameObject.name}#");
+            frames = 0;
+        }
+        else
+        {
+            frames++;
+        }
 
         animator.SetBool("grounded", IsGrounded);
         animator.SetFloat("velocityX", Mathf.Abs(velocity.x) / maxSpeed);

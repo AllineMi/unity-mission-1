@@ -22,8 +22,8 @@ namespace Platformer.Mechanics
         public float jumpTakeOffSpeed = 7;
 
         public JumpState jumpState = JumpState.Grounded;
-        private bool stopJump;
-        private bool jump;
+        public bool stopJump;
+        public bool jump;
 
         public Collider2D collider2d;
         public Health health;
@@ -31,12 +31,12 @@ namespace Platformer.Mechanics
         /// <summary> Max horizontal speed of the player. </summary>
         public float maxSpeed = 7;
 
-        private Vector2 move;
+        public Vector2 move;
         public bool controlEnabled = true;
         public SpriteRenderer spriteRenderer;
-        internal Animator animator;
+        public Animator animator;
 
-        readonly PlatformerModel model = Simulation.GetModel<PlatformerModel>();
+        public PlatformerModel model = Simulation.GetModel<PlatformerModel>();
 
         public Bounds Bounds => collider2d.bounds;
 
@@ -46,9 +46,6 @@ namespace Platformer.Mechanics
 
         // SCARED
         internal bool scared;
-
-        // JUMP
-//        public Jump jumpAi;
 
         void Awake()
         {
@@ -144,6 +141,8 @@ namespace Platformer.Mechanics
             jumpTakeOffSpeed = 7f;
         }
 
+        private int frames = 0;
+
         protected override void ComputeVelocity()
         {
             if (jump && IsGrounded)
@@ -164,6 +163,16 @@ namespace Platformer.Mechanics
                 spriteRenderer.flipX = false;
             else if (move.x < -0.01f)
                 spriteRenderer.flipX = true;
+
+            if (frames % 50 == 0)
+            {
+                Debug.Log($"PlayerController move.x: {move.x} #{gameObject.name}#");
+                frames = 0;
+            }
+            else
+            {
+                frames++;
+            }
 
             animator.SetBool("grounded", IsGrounded);
             animator.SetFloat("velocityX", Mathf.Abs(velocity.x) / maxSpeed);
