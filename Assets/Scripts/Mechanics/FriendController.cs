@@ -29,7 +29,6 @@ namespace Platformer.Mechanics
         public float maxSpeed = 1;
 
         Vector2 move;
-        public bool controlEnabled;
         public SpriteRenderer spriteRenderer;
         internal Animator animator;
 
@@ -64,7 +63,7 @@ namespace Platformer.Mechanics
                 case JumpState.Jumping:
                     if (!IsGrounded)
                     {
-                        Schedule<PlayerJumped>().friend = this;
+                        Schedule<CharacterJumped>().friend = this;
                         jumpState = JumpState.InFlight;
                     }
 

@@ -11,7 +11,6 @@ namespace Gameplay
         public override void Execute()
         {
             bigBoss = shortcutZone.bigBoss;
-            bigBoss.StopMoving();
             bigBoss.canBecomeBigger = true;
         }
     }

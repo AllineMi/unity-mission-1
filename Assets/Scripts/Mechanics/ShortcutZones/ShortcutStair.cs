@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class ShortcutStair : MonoBehaviour
 {
-    // Start is called before the first frame update
     void OnTriggerEnter2D(Collider2D other)
     {
         var rb = other.attachedRigidbody;
@@ -11,6 +10,6 @@ public class ShortcutStair : MonoBehaviour
         var player = rb.GetComponent<PlayerController>();
         if (player == null) return;
         Debug.Log($"hi");
-        player.jumpAi.StartJumping();
+        //player.jumpAi.StartJumping();
     }
 }

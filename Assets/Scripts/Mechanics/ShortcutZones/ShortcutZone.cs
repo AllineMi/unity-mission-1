@@ -12,14 +12,17 @@ namespace Platformer.Mechanics
     {
         public PlayerController player;
         public BigBossController bigBoss;
+        public MyCharacterController characterController;
         private bool jumpScaredRan;
+        private bool playerEnteredZone;
 
         void OnTriggerEnter2D(Collider2D other)
         {
-            Debug.Log($"ShortcutZone, Collider: {other.gameObject.name}");
+            if (other.gameObject.CompareTag("Player"))
+            {
+                playerEnteredZone = true;
+            }
 
-            var rb = other.attachedRigidbody;
-            if (rb == null) return;
             if (player == null) return;
 
             if (other.gameObject.CompareTag("Player") && bigBoss.canBecomeBigger == false && player.scared == false)
@@ -27,13 +30,13 @@ namespace Platformer.Mechanics
                 var ej = Schedule<BigBossJump>();
                 ej.shortcutZone = this;
             }
-            // var ev = Schedule<PlayerEnteredShortcutZone>();
-            // ev.shortcutZone = this;
         }
 
         private void Update()
         {
-            if (bigBoss.jumpState == BigBossController.JumpState.Landed)
+            if (!playerEnteredZone) return;
+
+            if (bigBoss.myJumpState == MyCharacterController.MyJumpState.Landed)
             {
                 player.FlipPlayerX();
                 // TODO add dialogue saying that the monster is not scary. after that, monster gets bigger

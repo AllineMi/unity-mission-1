@@ -3,7 +3,6 @@ using Platformer.Gameplay;
 using static Platformer.Core.Simulation;
 using Platformer.Model;
 using Platformer.Core;
-using Platformer.Mechanics.Scripts;
 
 namespace Platformer.Mechanics
 {
@@ -21,6 +20,7 @@ namespace Platformer.Mechanics
 
         /// <summary> Initial jump velocity at the start of a jump. </summary>
         public float jumpTakeOffSpeed = 7;
+
         public JumpState jumpState = JumpState.Grounded;
         private bool stopJump;
         private bool jump;
@@ -48,7 +48,7 @@ namespace Platformer.Mechanics
         internal bool scared;
 
         // JUMP
-        public Jump jumpAi;
+//        public Jump jumpAi;
 
         void Awake()
         {
@@ -112,7 +112,7 @@ namespace Platformer.Mechanics
                 case JumpState.Jumping:
                     if (!IsGrounded)
                     {
-                        Schedule<PlayerJumped>().player = this;
+                        Schedule<CharacterJumped>().player = this;
                         jumpState = JumpState.InFlight;
                     }
 
