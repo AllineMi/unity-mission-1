@@ -14,29 +14,35 @@ namespace Platformer.Mechanics
     {
         public AudioClip jumpAudio;
         public AudioClip respawnAudio;
-
         public AudioClip ouchAudio;
-        public AudioSource audioSource;
 
-        /// <summary> Initial jump velocity at the start of a jump. </summary>
+        /// <summary>
+        /// Max horizontal speed of the player.
+        /// </summary>
+        public float maxSpeed = 7;
+
+        /// <summary>
+        /// Initial jump velocity at the start of a jump.
+        /// </summary>
         public float jumpTakeOffSpeed = 7;
 
         public JumpState jumpState = JumpState.Grounded;
-        public bool stopJump;
-        public bool jump;
 
+        private bool stopJump;
+
+        /*internal new*/
         public Collider2D collider2d;
+
+        /*internal new*/
+        public AudioSource audioSource;
         public Health health;
-
-        /// <summary> Max horizontal speed of the player. </summary>
-        public float maxSpeed = 7;
-
-        public Vector2 move;
         public bool controlEnabled = true;
+
+        bool jump;
+        Vector2 move;
         public SpriteRenderer spriteRenderer;
         public Animator animator;
-
-        public PlatformerModel model = Simulation.GetModel<PlatformerModel>();
+        readonly PlatformerModel model = Simulation.GetModel<PlatformerModel>();
 
         public Bounds Bounds => collider2d.bounds;
 
@@ -49,8 +55,8 @@ namespace Platformer.Mechanics
 
         void Awake()
         {
-            health = GetComponent<Health>();
             token = GetComponent<Token>();
+            health = GetComponent<Health>();
             audioSource = GetComponent<AudioSource>();
             collider2d = GetComponent<Collider2D>();
             spriteRenderer = GetComponent<SpriteRenderer>();
@@ -82,18 +88,6 @@ namespace Platformer.Mechanics
 
             UpdateJumpState();
             base.Update();
-        }
-
-        private void JumpScare()
-        {
-            jumpTakeOffSpeed = 1f;
-            animator.GetComponent<Rigidbody2D>().velocity = new Vector2(5f, 0f);
-            jump = false;
-        }
-
-        public void FlipPlayerX()
-        {
-            spriteRenderer.flipX = true;
         }
 
         void UpdateJumpState()
@@ -136,11 +130,6 @@ namespace Platformer.Mechanics
             }
         }
 
-        void ResetPlayerTakeOffSpeed()
-        {
-            jumpTakeOffSpeed = 7f;
-        }
-
         private int frames = 0;
 
         protected override void ComputeVelocity()
@@ -164,7 +153,7 @@ namespace Platformer.Mechanics
             else if (move.x < -0.01f)
                 spriteRenderer.flipX = true;
 
-            if (frames % 50 == 0)
+            if (frames % 100 == 0)
             {
                 Debug.Log($"PlayerController move.x: {move.x} #{gameObject.name}#");
                 frames = 0;
@@ -187,6 +176,23 @@ namespace Platformer.Mechanics
             Jumping,
             InFlight,
             Landed
+        }
+
+        void ResetPlayerTakeOffSpeed()
+        {
+            jumpTakeOffSpeed = 7f;
+        }
+
+        private void JumpScare()
+        {
+            jumpTakeOffSpeed = 1f;
+            animator.GetComponent<Rigidbody2D>().velocity = new Vector2(5f, 0f);
+            jump = false;
+        }
+
+        public void FlipPlayerX()
+        {
+            spriteRenderer.flipX = true;
         }
 
         // TODO to check

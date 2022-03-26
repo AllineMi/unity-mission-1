@@ -66,7 +66,7 @@ namespace Platformer.Mechanics
             else if (move.x < -0.01f)
                 spriteRenderer.flipX = true;
 
-            if (frames % 50 == 0)
+            if (frames % 100 == 0)
             {
                 Debug.Log($"AnimationController move.x: {move.x} #{gameObject.name}#");
                 frames = 0;

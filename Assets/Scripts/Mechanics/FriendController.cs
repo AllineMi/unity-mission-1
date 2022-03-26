@@ -83,41 +83,41 @@ namespace Platformer.Mechanics
             }
         }
         private int frames = 0;
-        protected override void ComputeVelocity()
-        {
-            if (jump && IsGrounded)
-            {
-                velocity.y = jumpTakeOffSpeed * model.jumpModifier;
-                jump = false;
-            }
-            else if (stopJump)
-            {
-                stopJump = false;
-                if (velocity.y > 0)
-                {
-                    velocity.y = velocity.y * model.jumpDeceleration;
-                }
-            }
-
-            if (move.x > 0.01f)
-                spriteRenderer.flipX = false;
-            else if (move.x < -0.01f)
-                spriteRenderer.flipX = true;
-            if (frames % 50 == 0)
-            {
-                Debug.Log($"FriendController move.x: {move.x} #{gameObject.name}#");
-
-                frames = 0;
-            }
-            else
-            {
-                frames++;
-            }
-            animator.SetBool("grounded", IsGrounded);
-            animator.SetFloat("velocityX", Mathf.Abs(velocity.x) / maxSpeed);
-
-            targetVelocity = move * maxSpeed;
-        }
+        // protected override void ComputeVelocity()
+        // {
+        //     if (jump && IsGrounded)
+        //     {
+        //         velocity.y = jumpTakeOffSpeed * model.jumpModifier;
+        //         jump = false;
+        //     }
+        //     else if (stopJump)
+        //     {
+        //         stopJump = false;
+        //         if (velocity.y > 0)
+        //         {
+        //             velocity.y = velocity.y * model.jumpDeceleration;
+        //         }
+        //     }
+        //
+        //     if (move.x > 0.01f)
+        //         spriteRenderer.flipX = false;
+        //     else if (move.x < -0.01f)
+        //         spriteRenderer.flipX = true;
+        //     if (frames % 100 == 0)
+        //     {
+        //         Debug.Log($"FriendController move.x: {move.x} #{gameObject.name}#");
+        //
+        //         frames = 0;
+        //     }
+        //     else
+        //     {
+        //         frames++;
+        //     }
+        //     animator.SetBool("grounded", IsGrounded);
+        //     animator.SetFloat("velocityX", Mathf.Abs(velocity.x) / maxSpeed);
+        //
+        //     targetVelocity = move * maxSpeed;
+        // }
 
         public enum JumpState
         {
