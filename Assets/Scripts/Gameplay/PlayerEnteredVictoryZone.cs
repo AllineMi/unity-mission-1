@@ -27,7 +27,7 @@ namespace Platformer.Gameplay
             player = victoryZone.player;
             friend = victoryZone.friend;
             if (player.token.currentToken >= 20) colletedAllTokens = true;
-            player.controlEnabled = false;
+            player.DisableInput();
             model.virtualCamera.enabled = false;
 
             if (friend == null) Debug.Log($"PlayerEnteredVictoryZone: Friend is NULL");
@@ -51,14 +51,11 @@ namespace Platformer.Gameplay
             }
 
             //victoryCondition = shortcutActivate == false ? VictoryCondition.Default : VictoryCondition.Shortcut;
-            //
             // // "yes shortcut, no token"
             // if (shortcutActivate && player.token.currentToken < 20) victoryCondition = VictoryCondition.Shortcut;
             // // "yes shortcut, yes token"
             // if (!shortcutActivate || player.token.currentToken == 20) victoryCondition = VictoryCondition.TokenShortcut;
-            //
             // if (player.token.currentToken < 20) victoryCondition = shortcutActivate == false ? VictoryCondition.Default : VictoryCondition.Shortcut;
-
             // if (player.token.currentToken == 20) victoryCondition = shortcutActivate == false ? VictoryCondition.Token : VictoryCondition.TokenShortcut;
         }
 

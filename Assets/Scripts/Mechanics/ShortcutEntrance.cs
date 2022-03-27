@@ -16,7 +16,7 @@ namespace Platformer.Mechanics
 
             if (shortcutActivated == false)
             {
-                player.controlEnabled = false;
+                player.DisableInput();
                 player.collider2d.enabled = false;
                 player.spriteRenderer.flipX = false;
 
