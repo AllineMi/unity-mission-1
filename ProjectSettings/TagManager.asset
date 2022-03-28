@@ -6,11 +6,12 @@ TagManager:
   tags:
   - TutorialRequirement
   - Friend
+  - Elevator
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 1
+  - 
   - Water
   - UI
   - 

@@ -13,8 +13,6 @@ namespace Platformer.Mechanics
     public class FriendController : KinematicObject
     {
         public AudioClip jumpAudio;
-
-        /*internal new*/
         public AudioSource audioSource;
 
         /// <summary> Initial jump velocity at the start of a jump. </summary>
@@ -31,7 +29,6 @@ namespace Platformer.Mechanics
         public float maxSpeed = 1;
 
         Vector2 move;
-        public bool controlEnabled;
         public SpriteRenderer spriteRenderer;
         internal Animator animator;
 
@@ -66,7 +63,7 @@ namespace Platformer.Mechanics
                 case JumpState.Jumping:
                     if (!IsGrounded)
                     {
-                        Schedule<PlayerJumped>().friend = this;
+                        Schedule<CharacterJumped>().friend = this;
                         jumpState = JumpState.InFlight;
                     }
 
@@ -80,10 +77,15 @@ namespace Platformer.Mechanics
 
                     break;
                 case JumpState.Landed:
-                    animator.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
+                    StopMoving();
                     jumpState = JumpState.Grounded;
                     break;
             }
+        }
+
+        private void StopMoving()
+        {
+            animator.enabled = false;
         }
 
         protected override void ComputeVelocity()

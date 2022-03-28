@@ -1,5 +1,5 @@
-﻿using Platformer.Core;
-using UnityEngine;
+﻿using UnityEngine;
+using Platformer.Core;
 
 namespace Platformer.Mechanics
 {

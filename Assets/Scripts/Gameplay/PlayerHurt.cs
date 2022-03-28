@@ -16,21 +16,21 @@ namespace Platformer.Gameplay
         public override void Execute()
         {
             var player = model.player;
-            
+
             if (player.health.IsAlive)
             {
                 player.health.Hurt();
                 model.virtualCamera.m_Follow = null;
                 model.virtualCamera.m_LookAt = null;
                 //player.collider2d.enabled = false;
-                player.controlEnabled = false;
+                player.DisableInput();
 
                 if (player.audioSource && player.ouchAudio)
                     player.audioSource.PlayOneShot(player.ouchAudio);
                 player.animator.SetTrigger("hurt");
-                
+
                 TeleportPlayerHurtPosition(player);
-                
+
                 Simulation.Schedule<EnablePlayerInput>(1f);
             }
         }

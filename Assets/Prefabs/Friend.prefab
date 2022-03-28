@@ -50,14 +50,12 @@ MonoBehaviour:
   minGroundNormalY: 0.65
   gravityModifier: 1
   velocity: {x: 0, y: 0}
-  targetVelocity: {x: 0, y: 0}
   jumpAudio: {fileID: 0}
   audioSource: {fileID: 0}
   jumpTakeOffSpeed: 5
   jumpState: 0
   collider2d: {fileID: 0}
   maxSpeed: 1
-  controlEnabled: 0
   spriteRenderer: {fileID: 0}
 --- !u!212 &4098722405849959810
 SpriteRenderer:

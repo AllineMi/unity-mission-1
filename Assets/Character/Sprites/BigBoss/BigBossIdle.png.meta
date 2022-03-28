@@ -1,0 +1,1104 @@
+fileFormatVersion: 2
+guid: 036dbbcab6b162d4fa0be4efb51c10e3
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: Unity_Baddie_Idle_0
+  - first:
+      213: 21300002
+    second: Unity_Baddie_Idle_1
+  - first:
+      213: 21300004
+    second: Unity_Baddie_Idle_2
+  - first:
+      213: 21300006
+    second: Unity_Baddie_Idle_3
+  - first:
+      213: 21300008
+    second: Unity_Baddie_Idle_4
+  - first:
+      213: 21300010
+    second: Unity_Baddie_Idle_5
+  - first:
+      213: 21300012
+    second: Unity_Baddie_Idle_6
+  - first:
+      213: 21300014
+    second: Unity_Baddie_Idle_7
+  - first:
+      213: 21300016
+    second: Unity_Baddie_Idle_8
+  - first:
+      213: 21300018
+    second: Unity_Baddie_Idle_9
+  - first:
+      213: 21300020
+    second: Unity_Baddie_Idle_10
+  - first:
+      213: 21300022
+    second: Unity_Baddie_Idle_11
+  - first:
+      213: 21300024
+    second: Unity_Baddie_Idle_12
+  - first:
+      213: 21300026
+    second: Unity_Baddie_Idle_13
+  - first:
+      213: 21300028
+    second: Unity_Baddie_Idle_14
+  - first:
+      213: 21300030
+    second: Unity_Baddie_Idle_15
+  - first:
+      213: 21300032
+    second: Unity_Baddie_Idle_16
+  - first:
+      213: 21300034
+    second: Unity_Baddie_Idle_17
+  - first:
+      213: 21300036
+    second: Unity_Baddie_Idle_18
+  - first:
+      213: 21300038
+    second: Unity_Baddie_Idle_19
+  - first:
+      213: 21300040
+    second: Unity_Baddie_Idle_20
+  - first:
+      213: 21300042
+    second: Unity_Baddie_Idle_21
+  - first:
+      213: 21300044
+    second: Unity_Baddie_Idle_22
+  - first:
+      213: 21300046
+    second: Unity_Baddie_Idle_23
+  - first:
+      213: 21300048
+    second: Unity_Baddie_Idle_24
+  - first:
+      213: 21300050
+    second: Unity_Baddie_Idle_25
+  - first:
+      213: 21300052
+    second: Unity_Baddie_Idle_26
+  - first:
+      213: 21300054
+    second: Unity_Baddie_Idle_27
+  - first:
+      213: 21300056
+    second: Unity_Baddie_Idle_28
+  - first:
+      213: 21300058
+    second: Unity_Baddie_Idle_29
+  - first:
+      213: 21300060
+    second: Unity_Baddie_Idle_30
+  - first:
+      213: 21300062
+    second: Unity_Baddie_Idle_31
+  - first:
+      213: 21300064
+    second: Unity_Baddie_Idle_32
+  - first:
+      213: 21300066
+    second: Unity_Baddie_Idle_33
+  - first:
+      213: 21300068
+    second: Unity_Baddie_Idle_34
+  - first:
+      213: 21300070
+    second: Unity_Baddie_Idle_35
+  - first:
+      213: 21300072
+    second: Unity_Baddie_Idle_36
+  - first:
+      213: 21300074
+    second: Unity_Baddie_Idle_37
+  - first:
+      213: 21300076
+    second: Unity_Baddie_Idle_38
+  - first:
+      213: 21300078
+    second: Unity_Baddie_Idle_39
+  - first:
+      213: 21300080
+    second: Unity_Baddie_Idle_40
+  - first:
+      213: 21300082
+    second: Unity_Baddie_Idle_41
+  - first:
+      213: 21300084
+    second: Unity_Baddie_Idle_42
+  - first:
+      213: 21300086
+    second: Unity_Baddie_Idle_43
+  - first:
+      213: 21300088
+    second: Unity_Baddie_Idle_44
+  - first:
+      213: 21300090
+    second: Unity_Baddie_Idle_45
+  - first:
+      213: 21300092
+    second: Unity_Baddie_Idle_46
+  - first:
+      213: 21300094
+    second: Unity_Baddie_Idle_47
+  - first:
+      213: -5094648048729848839
+    second: BigBossIdle_0
+  - first:
+      213: -175554273967009962
+    second: BigBossIdle_1
+  - first:
+      213: -1613219840124442009
+    second: BigBossIdle_2
+  - first:
+      213: 1764086766552154082
+    second: BigBossIdle_3
+  - first:
+      213: -8087282513338495988
+    second: BigBossIdle_4
+  - first:
+      213: -2707298777631084842
+    second: BigBossIdle_5
+  - first:
+      213: 3392603025287242384
+    second: BigBossIdle_6
+  - first:
+      213: -5150017441077584115
+    second: BigBossIdle_7
+  - first:
+      213: 6099277500766982986
+    second: BigBossIdle_8
+  - first:
+      213: 4039999534078784003
+    second: BigBossIdle_9
+  - first:
+      213: -2306178157226210857
+    second: BigBossIdle_10
+  - first:
+      213: -1653697346504520987
+    second: BigBossIdle_11
+  - first:
+      213: -3493187676630741833
+    second: BigBossIdle_12
+  - first:
+      213: -1864345760118154756
+    second: BigBossIdle_13
+  - first:
+      213: 4445288297015524347
+    second: BigBossIdle_14
+  - first:
+      213: 950122206672759747
+    second: BigBossIdle_15
+  - first:
+      213: -5942505793794288051
+    second: BigBossIdle_16
+  - first:
+      213: -3893332268649786200
+    second: BigBossIdle_17
+  - first:
+      213: -6912384482163221889
+    second: BigBossIdle_18
+  - first:
+      213: -3774587382732582876
+    second: BigBossIdle_19
+  - first:
+      213: -7330614932353763822
+    second: BigBossIdle_20
+  - first:
+      213: 7304979730082619417
+    second: BigBossIdle_21
+  - first:
+      213: -8450712994590749504
+    second: BigBossIdle_22
+  - first:
+      213: 6583091103165681278
+    second: BigBossIdle_23
+  - first:
+      213: 9093238718776553576
+    second: BigBossIdle_24
+  - first:
+      213: 8294001108533980721
+    second: BigBossIdle_25
+  - first:
+      213: 9213769300360795688
+    second: BigBossIdle_26
+  - first:
+      213: 6620114677772934076
+    second: BigBossIdle_27
+  - first:
+      213: 6383572137825442535
+    second: BigBossIdle_28
+  - first:
+      213: -1246369094183723243
+    second: BigBossIdle_29
+  - first:
+      213: 3208004187956234501
+    second: BigBossIdle_30
+  - first:
+      213: -1005432318888727714
+    second: BigBossIdle_31
+  - first:
+      213: 5617680573659683069
+    second: BigBossIdle_32
+  - first:
+      213: -1728182206021549244
+    second: BigBossIdle_33
+  - first:
+      213: 102738807968549075
+    second: BigBossIdle_34
+  - first:
+      213: 3936051496205096314
+    second: BigBossIdle_35
+  - first:
+      213: -5350184643962667795
+    second: BigBossIdle_36
+  - first:
+      213: -8265422843384501062
+    second: BigBossIdle_37
+  - first:
+      213: -7043221453101522413
+    second: BigBossIdle_38
+  - first:
+      213: -8314640525946928894
+    second: BigBossIdle_39
+  - first:
+      213: 7128197060831798345
+    second: BigBossIdle_40
+  - first:
+      213: 523175196422765294
+    second: BigBossIdle_41
+  - first:
+      213: -2666698163278554016
+    second: BigBossIdle_42
+  - first:
+      213: -3322918641317368390
+    second: BigBossIdle_43
+  - first:
+      213: 5116683425928031965
+    second: BigBossIdle_44
+  - first:
+      213: 6742334832251058702
+    second: BigBossIdle_45
+  - first:
+      213: -8027691413162163486
+    second: BigBossIdle_46
+  - first:
+      213: 535391572825558171
+    second: BigBossIdle_47
+  - first:
+      213: -1513745432192030593
+    second: BigBossIdle_48
+  - first:
+      213: -3935708172808786318
+    second: BigBossIdle_49
+  - first:
+      213: -7076795780196167511
+    second: BigBossIdle_50
+  - first:
+      213: -5998862079623585385
+    second: BigBossIdle_51
+  - first:
+      213: 1496886815947348981
+    second: BigBossIdle_52
+  - first:
+      213: -6353300116154108295
+    second: BigBossIdle_53
+  - first:
+      213: -1675627441456311692
+    second: BigBossIdle_54
+  - first:
+      213: -8443580003889092149
+    second: BigBossIdle_55
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: BigBossIdle_1
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 630
+        width: 128
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65f0565615e409df0800000000000000
+      internalID: -175554273967009962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigBossIdle_2
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 630
+        width: 128
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76a25c44a11bc99e0800000000000000
+      internalID: -1613219840124442009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigBossIdle_3
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 630
+        width: 128
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2effe41519b4b7810800000000000000
+      internalID: 1764086766552154082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigBossIdle_4
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 630
+        width: 128
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0c0b32076334cf80800000000000000
+      internalID: -8087282513338495988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigBossIdle_5
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 630
+        width: 128
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6de237a0b1ebd6ad0800000000000000
+      internalID: -2707298777631084842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigBossIdle_6
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 630
+        width: 128
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 092692a0a72f41f20800000000000000
+      internalID: 3392603025287242384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigBossIdle_7
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 630
+        width: 128
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0f118d5c667788b0800000000000000
+      internalID: -5150017441077584115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigBossIdle_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 504
+        width: 128
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a439fb3529cf4a450800000000000000
+      internalID: 6099277500766982986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigBossIdle_9
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 504
+        width: 128
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3027281eb26f01830800000000000000
+      internalID: 4039999534078784003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigBossIdle_10
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 504
+        width: 128
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d944c54f2fceffd0800000000000000
+      internalID: -2306178157226210857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigBossIdle_11
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 504
+        width: 128
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ea87976603ec09e0800000000000000
+      internalID: -1653697346504520987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigBossIdle_12
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 504
+        width: 128
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7bc07a8d054b58fc0800000000000000
+      internalID: -3493187676630741833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigBossIdle_13
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 504
+        width: 128
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf9d6ada8638026e0800000000000000
+      internalID: -1864345760118154756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigBossIdle_14
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 504
+        width: 128
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bfbbfcb6726d0bd30800000000000000
+      internalID: 4445288297015524347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigBossIdle_15
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 504
+        width: 128
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3cba0fdec138f2d00800000000000000
+      internalID: 950122206672759747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigBossIdle_46
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 128
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e204083139e79090800000000000000
+      internalID: -8027691413162163486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigBossIdle_47
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 0
+        width: 128
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9c41028cc71e6700800000000000000
+      internalID: 535391572825558171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigBossIdle_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 630
+        width: 128
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f302df979c2c49b0800000000000000
+      internalID: -5094648048729848839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigBossIdle_32
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 126
+        width: 128
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df8199ec7b206fd40800000000000000
+      internalID: 5617680573659683069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigBossIdle_33
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 126
+        width: 128
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4434fee90734408e0800000000000000
+      internalID: -1728182206021549244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigBossIdle_34
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 126
+        width: 128
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d8cc99c6600d6100800000000000000
+      internalID: 102738807968549075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigBossIdle_35
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 126
+        width: 128
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7513f05bf9af9630800000000000000
+      internalID: 3936051496205096314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigBossIdle_36
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 126
+        width: 128
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: decfadda96350c5b0800000000000000
+      internalID: -5350184643962667795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigBossIdle_37
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 126
+        width: 128
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abceaad47b15b4d80800000000000000
+      internalID: -8265422843384501062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigBossIdle_38
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 126
+        width: 128
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 312297da763714e90800000000000000
+      internalID: -7043221453101522413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigBossIdle_39
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 126
+        width: 128
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 201cdd79e767c9c80800000000000000
+      internalID: -8314640525946928894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigBossIdle_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 128
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 944ecd3c5717ce260800000000000000
+      internalID: 7128197060831798345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigBossIdle_41
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 128
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eeaf21ab111b24700800000000000000
+      internalID: 523175196422765294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigBossIdle_42
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 128
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06c5896362cfdfad0800000000000000
+      internalID: -2666698163278554016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigBossIdle_43
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 128
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abd21cee91f92e1d0800000000000000
+      internalID: -3322918641317368390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigBossIdle_44
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 128
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ddea19e677c120740800000000000000
+      internalID: 5116683425928031965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigBossIdle_45
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 0
+        width: 128
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0a3119bec5919d50800000000000000
+      internalID: 6742334832251058702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: cccc4f084eebb4ed8816ddceac6c2f9d
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Platformer.Core;
+﻿using Platformer.Core;
 using Platformer.Model;
 using UnityEngine;
 
@@ -16,6 +14,7 @@ namespace Platformer.Mechanics
         /// Max horizontal speed.
         /// </summary>
         public float maxSpeed = 7;
+
         /// <summary>
         /// Max jump velocity
         /// </summary>

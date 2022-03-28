@@ -11,6 +11,7 @@ namespace Platformer.Gameplay
     {
         public PlayerController player;
         public FriendController friend;
+        public BigBossController bigBoss;
 
         public override void Execute()
         {
