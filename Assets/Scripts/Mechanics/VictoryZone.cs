@@ -1,27 +1,22 @@
 using Platformer.Gameplay;
-using UnityEngine;
 using static Platformer.Core.Simulation;
 
 namespace Platformer.Mechanics
 {
-    /// <summary>
-    /// Marks a trigger as a VictoryZone, usually used to end the current game level.
-    /// </summary>
-    public class VictoryZone : MonoBehaviour
+    /// <summary> Marks a trigger as a VictoryZone, usually used to end the current game level. </summary>
+    public class VictoryZone : BasePlayerColliderTrigger
     {
-        public PlayerController player;
         public FriendController friend;
 
-        void OnTriggerEnter2D(Collider2D other)
+        protected override void DoEnterTriggerAction()
         {
-            var rb = other.attachedRigidbody;
-            if (rb == null) return;
-
-            player = rb.GetComponent<PlayerController>();
-
-            if (player == null) return;
             var ev = Schedule<PlayerEnteredVictoryZone>();
             ev.victoryZone = this;
+        }
+
+        protected override void DoExitTriggerAction()
+        {
+            // throw new System.NotImplementedException();
         }
     }
 }

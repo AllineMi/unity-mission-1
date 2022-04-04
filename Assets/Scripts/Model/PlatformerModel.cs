@@ -1,5 +1,5 @@
-using Platformer.Mechanics;
 using UnityEngine;
+using Platformer.Mechanics;
 
 namespace Platformer.Model
 {
@@ -21,12 +21,6 @@ namespace Platformer.Model
         /// by the user.
         /// </summary>
         public PlayerController player;
-
-        /// <summary>
-        /// The main component which controls the friend sprite, controlled
-        /// by the user.
-        /// </summary>
-        public FriendController friend;
 
         /// <summary>
         /// The spawn point in the scene.

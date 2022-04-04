@@ -28,7 +28,7 @@ namespace Platformer.Mechanics
         /// <value></value>
         public bool IsGrounded { get; private set; }
 
-        public Vector2 targetVelocity;
+        protected Vector2 targetVelocity;
         protected Vector2 groundNormal;
         protected Rigidbody2D body;
         protected ContactFilter2D contactFilter;

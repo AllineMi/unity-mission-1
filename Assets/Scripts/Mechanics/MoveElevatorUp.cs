@@ -1,7 +1,7 @@
 ﻿using Platformer.Core;
 using UnityEngine;
 
-namespace Mechanics
+namespace Platformer.Mechanics
 {
     public class MoveElevatorUp : Simulation.Event<MoveElevatorUp>
     {

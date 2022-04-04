@@ -1,19 +1,17 @@
 ﻿using Platformer.Core;
 using Platformer.Mechanics;
 
-namespace Gameplay
+namespace Platformer.Gameplay
 {
-    public class PlayerScared : Simulation.Event<PlayerScared>
+    internal class PlayerScared : Simulation.Event<PlayerScared>
     {
-        public ShortcutZone shortcutZone;
+        internal ShortcutZone shortcutZone;
         private PlayerController player;
 
         public override void Execute()
         {
             player = shortcutZone.player;
-            player.jumpState = PlayerController.JumpState.PrepareToJump;
-            player.scared = true;
-            player.animator.SetTrigger("hurt");
+            player.JumpScare();
         }
     }
 }

@@ -1,52 +1,112 @@
-﻿using Platformer.Gameplay;
-using UnityEngine;
+﻿using UnityEngine;
+using Platformer.Gameplay;
 using static Platformer.Core.Simulation;
 
 namespace Platformer.Mechanics
 {
-    /// <summary>
-    /// A simple controller for enemies. Provides movement control over a patrol path.
-    /// </summary>
-    [RequireComponent(typeof(AnimationController), typeof(Collider2D))]
-    public class EnemyController : MonoBehaviour
+    /// <summary> A simple controller for enemies. Provides movement control over a patrol path. </summary>
+    [RequireComponent(typeof(Collider2D))]
+    public class EnemyController : MyCharacterController
     {
-        public PatrolPath path;
+        #region AUDIO VARIABLES
+
+        // AUDIO SETTINGS
         public AudioClip ouch;
+        internal AudioSource audioeEnemy;
 
-        internal PatrolPath.Mover mover;
-        internal AnimationController control;
-        internal Collider2D _collider;
-        internal AudioSource _audio;
-        SpriteRenderer spriteRenderer;
+        #endregion
 
-        public Bounds Bounds => _collider.bounds;
+        #region BOUNDS VARIABLES
 
-        void Awake()
+        public Bounds BoundsEnemy => colliderEnemy.bounds;
+
+        #endregion
+
+        #region COLLIDER VARIABLES
+
+        internal Collider2D colliderEnemy;
+
+        #endregion
+
+        #region PATH VARIABLES
+
+        // PATH SETTINGS
+        public PatrolPath path;
+        PatrolPath.Mover mover;
+
+        #endregion
+
+        protected override void Awake()
         {
-            control = GetComponent<AnimationController>();
-            _collider = GetComponent<Collider2D>();
-            _audio = GetComponent<AudioSource>();
-            spriteRenderer = GetComponent<SpriteRenderer>();
+            // AUDIO
+            audioeEnemy = GetComponent<AudioSource>();
+
+            // COLLIDER
+            colliderEnemy = GetComponent<Collider2D>();
+
+            base.Awake();
         }
+
+        protected override void Update()
+        {
+            if (path == null) return;
+
+            if (stopMoving)
+            {
+                move.x = 0f;
+            }
+            else
+            {
+                if (mover == null)
+                {
+                    mover = path.CreateMover(maxSpeed * 0.5f);
+                }
+
+                move.x = Mathf.Clamp(mover.Position.x - transform.position.x, -1, 1);
+            }
+
+            base.Update();
+        }
+
+        #region AUDIO
+
+        internal void PlayHurtAudio()
+        {
+            audioeEnemy.PlayOneShot(ouch);
+        }
+
+        #endregion
+
+        #region COLLIDER
 
         void OnCollisionEnter2D(Collision2D collision)
         {
             var player = collision.gameObject.GetComponent<PlayerController>();
-            if (player != null)
-            {
-                var ev = Schedule<PlayerEnemyCollision>();
-                ev.player = player;
-                ev.enemy = this;
-            }
+            if (player == null) return;
+
+            var ev = Schedule<PlayerEnemyCollision>();
+            ev.player = player;
+            ev.enemy = this;
         }
 
-        void Update()
+        #endregion
+
+        #region JUMP
+
+        public override void Jump()
         {
-            if (path != null)
-            {
-                if (mover == null) mover = path.CreateMover(control.maxSpeed * 0.5f);
-                control.move.x = Mathf.Clamp(mover.Position.x - transform.position.x, -1, 1);
-            }
+            // throw new System.NotImplementedException();
         }
+
+        #endregion
+
+        #region MOVEMENT
+
+        internal override void StopMoving()
+        {
+            stopMoving = true;
+        }
+
+        #endregion
     }
 }

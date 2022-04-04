@@ -1,8 +1,7 @@
 ﻿using Platformer.Core;
-using Platformer.Mechanics;
 using UnityEngine;
 
-namespace Gameplay
+namespace Platformer.Mechanics
 {
     public class StartRunning : Simulation.Event<StartRunning>
     {
@@ -14,11 +13,11 @@ namespace Gameplay
         {
             player = shortcutZone.player;
             bigBoss = shortcutZone.bigBoss;
-            player.spriteRenderer.flipX = false;
+            player.FlipPlayerToFaceWest();
 
             // TODO use playerRigidBody.rotation = 50f; to make seem that is running away
             //player.GetComponent<Rigidbody2D>().rotation = 50f;
-            Rigidbody2D playerRigidBody = player.animator.GetComponent<Rigidbody2D>();
+            Rigidbody2D playerRigidBody = player.animatorPlayer.GetComponent<Rigidbody2D>();
             playerRigidBody.velocity = new Vector2(2f, 0f);
 
             //bigBoss.velocity = new Vector2(2f, 0f);

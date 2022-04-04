@@ -1,58 +1,60 @@
 ﻿using Platformer.Core;
 using Platformer.Gameplay;
-using Platformer.Mechanics;
 using UnityEngine;
 
-/// <summary>
-/// This event is triggered when the player character enters a trigger with a TeleportPad component.
-/// </summary>
-/// <typeparam name="Teletransportation"></typeparam>
-public class Teletransportation : Simulation.Event<Teletransportation>
+namespace Platformer.Mechanics
 {
-    internal Rigidbody2D destinationPad;
-    internal PlayerController playerController;
-
-    public override void Execute()
+    /// <summary>
+    /// This event is triggered when the player character enters a trigger with a TeleportPad component.
+    /// </summary>
+    /// <typeparam name="Teletransportation"></typeparam>
+    public class Teletransportation : Simulation.Event<Teletransportation>
     {
-        LockDestination();
+        internal GameObject destinationPad;
+        internal PlayerController playerController;
 
-        DisablePlayerControl();
+        public override void Execute()
+        {
+            LockDestination();
 
-        TurnPlayerEast();
+            DisablePlayerControl();
 
-        var playerDestination = GetPlayerDestination();
-        TeleportPlayer(playerDestination);
+            TurnPlayerEast();
 
-        EnablePlayerControl();
-    }
+            var playerDestination = GetPlayerDestination();
+            TeleportPlayer(playerDestination);
 
-    private void LockDestination()
-    {
-        destinationPad.GetComponent<TeleportPad>().isDestination = true;
-    }
+            EnablePlayerControl();
+        }
 
-    private void TurnPlayerEast()
-    {
-        playerController.spriteRenderer.flipX = false;
-    }
+        private void LockDestination()
+        {
+            destinationPad.GetComponent<TeleportPad>().isDestination = true;
+        }
 
-    private void DisablePlayerControl()
-    {
-        playerController.controlEnabled = false; // Disables player control
-    }
+        private void TurnPlayerEast()
+        {
+            playerController.FlipPlayerToFaceWest();
+        }
 
-    private Vector3 GetPlayerDestination()
-    {
-        return destinationPad.transform.position;
-    }
+        private void DisablePlayerControl()
+        {
+            playerController.DisableInput();
+        }
 
-    private void TeleportPlayer(Vector3 playerDestination)
-    {
-        playerController.Teleport(playerDestination);
-    }
+        private Vector3 GetPlayerDestination()
+        {
+            return destinationPad.transform.position;
+        }
 
-    private static void EnablePlayerControl()
-    {
-        Simulation.Schedule<EnablePlayerInput>(1f); // Enables player control
+        private void TeleportPlayer(Vector3 playerDestination)
+        {
+            playerController.Teleport(playerDestination);
+        }
+
+        private static void EnablePlayerControl()
+        {
+            Simulation.Schedule<EnablePlayerInput>(1f); // Enables player control
+        }
     }
 }

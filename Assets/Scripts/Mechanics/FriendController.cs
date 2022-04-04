@@ -1,8 +1,4 @@
 ﻿using UnityEngine;
-using Platformer.Gameplay;
-using static Platformer.Core.Simulation;
-using Platformer.Model;
-using Platformer.Core;
 
 namespace Platformer.Mechanics
 {
@@ -10,118 +6,60 @@ namespace Platformer.Mechanics
     /// This is the main class used to implement control of the player.
     /// It is a superset of the AnimationController class, but is inlined to allow for any kind of customisation.
     /// </summary>
-    public class FriendController : KinematicObject
+    [RequireComponent(typeof(Collider2D))]
+    public class FriendController : MyCharacterController
     {
+        #region AUDIO
+
         public AudioClip jumpAudio;
         public AudioSource audioSource;
 
-        /// <summary> Initial jump velocity at the start of a jump. </summary>
-        public float jumpTakeOffSpeed = 5;
+        #endregion
 
-        public JumpState jumpState = JumpState.Grounded;
-        private bool stopJump;
-        bool jump;
-
-        /*internal new*/
-        public Collider2D collider2d;
-
-        /// <summary> Max horizontal speed of the player. </summary>
-        public float maxSpeed = 1;
-
-        Vector2 move;
-        public SpriteRenderer spriteRenderer;
-        internal Animator animator;
-
-        readonly PlatformerModel model = Simulation.GetModel<PlatformerModel>();
+        #region BOUNDS
 
         public Bounds Bounds => collider2d.bounds;
 
-        void Awake()
+        #endregion
+
+        #region COLLIDER
+
+        public Collider2D collider2d;
+
+        #endregion
+
+        protected override void Awake()
         {
+            // AUDIO
             audioSource = GetComponent<AudioSource>();
+
+            // COLLIDER
             collider2d = GetComponent<Collider2D>();
-            spriteRenderer = GetComponent<SpriteRenderer>();
-            animator = GetComponent<Animator>();
+
+            base.Awake();
         }
 
-        protected override void Update()
+        #region ANIMATION
+
+        internal void PlayVictoryRunAnimation()
         {
-            UpdateJumpState();
-            base.Update();
+            animator.SetTrigger("victoryRun");
         }
 
-        void UpdateJumpState()
+        internal void PlayVictoryAnimation()
         {
-            jump = false;
-            switch (jumpState)
-            {
-                case JumpState.PrepareToJump:
-                    jumpState = JumpState.Jumping;
-                    jump = true;
-                    stopJump = false;
-                    break;
-                case JumpState.Jumping:
-                    if (!IsGrounded)
-                    {
-                        Schedule<CharacterJumped>().friend = this;
-                        jumpState = JumpState.InFlight;
-                    }
-
-                    break;
-                case JumpState.InFlight:
-                    if (IsGrounded)
-                    {
-                        Schedule<PlayerLanded>().friend = this;
-                        jumpState = JumpState.Landed;
-                    }
-
-                    break;
-                case JumpState.Landed:
-                    StopMoving();
-                    jumpState = JumpState.Grounded;
-                    break;
-            }
+            animator.SetTrigger("victory");
         }
 
-        private void StopMoving()
+        #endregion
+
+        #region JUMP
+
+        public override void Jump()
         {
-            animator.enabled = false;
+            //throw new System.NotImplementedException();
         }
 
-        protected override void ComputeVelocity()
-        {
-            if (jump && IsGrounded)
-            {
-                velocity.y = jumpTakeOffSpeed * model.jumpModifier;
-                jump = false;
-            }
-            else if (stopJump)
-            {
-                stopJump = false;
-                if (velocity.y > 0)
-                {
-                    velocity.y = velocity.y * model.jumpDeceleration;
-                }
-            }
-
-            if (move.x > 0.01f)
-                spriteRenderer.flipX = false;
-            else if (move.x < -0.01f)
-                spriteRenderer.flipX = true;
-
-            animator.SetBool("grounded", IsGrounded);
-            animator.SetFloat("velocityX", Mathf.Abs(velocity.x) / maxSpeed);
-
-            targetVelocity = move * maxSpeed;
-        }
-
-        public enum JumpState
-        {
-            Grounded,
-            PrepareToJump,
-            Jumping,
-            InFlight,
-            Landed
-        }
+        #endregion
     }
 }

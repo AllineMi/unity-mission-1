@@ -1,11 +1,8 @@
-﻿using Platformer.Mechanics;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Mechanics
+namespace Platformer.Mechanics
 {
-    /// <summary>
-    /// This is an 4 direction movement enum.
-    /// </summary>
+    /// <summary> This is an 4 direction movement enum. </summary>
     /// <remarks>
     /// MoveDirection provides a way of switching between moving states. You must assign these states to actions,
     /// such as moving the GameObject by an up vector when in the Up state.
@@ -14,13 +11,14 @@ namespace Mechanics
     /// state when it is needed.
     /// </remarks>
     [RequireComponent(typeof(Rigidbody2D))]
-    //This is a full example of how a GameObject changes direction using MoveDirection states
-    //Assign this script to a visible GameObject (with a Rigidbody attached) to see it in action
     public class MyObjectController : KinematicObject
     {
-        public Vector3 m_MyObjectStartForce = new Vector3(1f, 1f, 1f);
+        #region MOVEMENT
 
+        public float speed = 5.0f;
         public Rigidbody2D m_MyObjectRigidbody;
+
+        public Vector3 m_MyObjectStartForce = new Vector3(1f, 1f, 1f);
 
         //Use Enum for easy switching between direction states
         MyObjectMoveDirection m_MyObjectMoveDirection;
@@ -29,7 +27,8 @@ namespace Mechanics
         Vector3 m_MyObjectResetVector;
         Vector3 m_MyObjectUpVector;
         Vector3 m_MyObjectRightVector;
-        public float speed = 5.0f;
+
+        #endregion
 
         void Awake()
         {

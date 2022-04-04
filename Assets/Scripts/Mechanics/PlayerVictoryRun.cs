@@ -1,5 +1,4 @@
-﻿using UnityEngine;
-using Platformer.Core;
+﻿using Platformer.Core;
 
 namespace Platformer.Mechanics
 {
@@ -11,20 +10,16 @@ namespace Platformer.Mechanics
 
         public override void Execute()
         {
-            /* For some reason, we are unable to get player from the victoryZone after we run
-            FriendVictoryJump forcing us to pass it manually when schedulling this event.
-            There must be away around, but I will not look at it now. */
-            // If we don't get the player null error, we must get it from victoryZone
-            if (victoryZone.player != null) player = victoryZone.player;
+            player = victoryZone.player;
             friend = victoryZone.friend;
 
-            player.animator.SetTrigger("victoryRun");
-            Rigidbody2D playerRigidBody = player.animator.GetComponent<Rigidbody2D>();
-            playerRigidBody.velocity = new Vector2(2f, 0f);
+            player.PlayVictoryRunAnimation();
+            player.maxSpeed = 3f;
+            player.MoveRight();
 
-            friend.animator.SetTrigger("victoryRun");
-            Rigidbody2D friendRigidBody = friend.animator.GetComponent<Rigidbody2D>();
-            friendRigidBody.velocity = new Vector2(2f, 0f);
+            friend.PlayVictoryRunAnimation();
+            friend.speed = 3f;
+            friend.MoveRight();
         }
     }
 }

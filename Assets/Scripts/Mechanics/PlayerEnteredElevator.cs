@@ -1,27 +1,26 @@
-﻿using Mechanics;
-using Platformer.Core;
+﻿using Platformer.Core;
 using UnityEngine;
-using UnityEngine.Animations;
 
 namespace Platformer.Mechanics
 {
     [RequireComponent(typeof(BoxCollider2D))]
-    public class PlayerEnteredElevator : MonoBehaviour
+    public class PlayerEnteredElevator : BasePlayerColliderTrigger
     {
-        public PlayerController player;
         public Elevator elevator;
 
-        private void OnTriggerEnter2D(Collider2D other)
+        protected override void DoEnterTriggerAction()
         {
-            if (other.CompareTag("Player"))
-            {
-                Debug.Log($"PlayerEnteredElevator");
-                player.StopMoving();
-                player.stayOnElevator = true;
-                player.transform.parent = elevator.transform;
-                var meu = Simulation.Schedule<MoveElevatorUp>(1f);
-                meu.elevator = elevator;
-            }
+            Debug.Log($"PlayerEnteredElevator");
+            player.StopMoving();
+            player.playerStayOnElevator = true;
+            player.transform.parent = elevator.transform;
+            var meu = Simulation.Schedule<MoveElevatorUp>(1f);
+            meu.elevator = elevator;
+        }
+
+        protected override void DoExitTriggerAction()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

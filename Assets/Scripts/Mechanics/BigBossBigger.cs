@@ -1,11 +1,10 @@
-﻿using Platformer.Mechanics;
-using static Platformer.Core.Simulation;
+﻿using static Platformer.Core.Simulation;
 
-namespace Gameplay
+namespace Platformer.Mechanics
 {
-    public class BigBossBigger : Event<BigBossBigger>
+    internal class BigBossBigger : Event<BigBossBigger>
     {
-        public ShortcutZone shortcutZone;
+        internal ShortcutZone shortcutZone;
         private BigBossController bigBoss;
 
         public override void Execute()

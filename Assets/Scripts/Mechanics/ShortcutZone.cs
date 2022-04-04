@@ -1,55 +1,64 @@
-﻿using Gameplay;
-using static Platformer.Core.Simulation;
-using UnityEngine;
+﻿using Platformer.Core;
+using Platformer.Gameplay;
 
 namespace Platformer.Mechanics
 {
     /// <summary>
-    /// ShortcutZone components mark a collider which will schedule a
-    /// EnablePlayerComponents event when the player enters the trigger.
+    /// When Player enters the Shortcutzone,
+    /// Big Boss will jump towards the Player,
+    /// Player will turn to face Big Boss then Big Boss will become bigger,
+    /// Player will get scared and start running.
     /// </summary>
-    public class ShortcutZone : MonoBehaviour
+    public class ShortcutZone : BasePlayerColliderTrigger
     {
-        public PlayerController player;
         public BigBossController bigBoss;
-        public MyCharacterController characterController;
-        private bool jumpScaredRan;
         private bool playerEnteredZone;
 
-        void OnTriggerEnter2D(Collider2D other)
+        protected override void DoEnterTriggerAction()
         {
-            if (other.gameObject.CompareTag("Player"))
-            {
-                playerEnteredZone = true;
-            }
-
-            if (player == null) return;
-
-            if (other.gameObject.CompareTag("Player") && bigBoss.canBecomeBigger == false && player.scared == false)
-            {
-                var ej = Schedule<BigBossJump>();
-                ej.shortcutZone = this;
-            }
+            playerEnteredZone = true;
         }
 
         private void Update()
         {
             if (!playerEnteredZone) return;
 
-            if (bigBoss.myJumpState == MyCharacterController.MyJumpState.Landed)
-            {
-                player.FlipPlayerX();
-                // TODO add dialogue saying that the monster is not scary. after that, monster gets bigger
-                var bbb = Schedule<BigBossBigger>(2f);
-                bbb.shortcutZone = this;
-            }
+            if (!bigBoss.scareJump)
+                MakeBigBossJump();
 
-            if (bigBoss.canBecomeBigger && player.scared == false && jumpScaredRan == false)
-            {
-                jumpScaredRan = true;
-                var ps = Schedule<PlayerScared>();
-                ps.shortcutZone = this;
-            }
+            if (bigBoss.scareJump && !bigBoss.canBecomeBigger &&
+                bigBoss.jumpState == JumpStatePlayer.Landed)
+                MakeBigBossBigger();
+
+            if (bigBoss.canBecomeBigger && bigBoss.scareJump && player.playerScared == false &&
+                player.playerJumpScaredRan == false)
+                MakePlayerScared();
+        }
+
+        private void MakeBigBossJump()
+        {
+            // TODO should this line be here, since it is the only place that will use it? Or is there a better place to put it?
+            bigBoss.scareJump = true;
+            var ej = Simulation.Schedule<BigBossJump>();
+            ej.shortcutZone = this;
+        }
+
+        private void MakeBigBossBigger()
+        {
+            player.FlipPlayerToFaceEast();
+            var bbb = Simulation.Schedule<BigBossBigger>(2f);
+            bbb.shortcutZone = this;
+        }
+
+        private void MakePlayerScared()
+        {
+            var ps = Simulation.Schedule<PlayerScared>();
+            ps.shortcutZone = this;
+        }
+
+        protected override void DoExitTriggerAction()
+        {
+            // throw new System.NotImplementedException();
         }
     }
 }

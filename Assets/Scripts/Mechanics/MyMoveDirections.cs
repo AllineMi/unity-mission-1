@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
-using UnityEngine.EventSystems;
 
-namespace Mechanics
+namespace Platformer.Mechanics
 {
     /// <summary>
     /// This is an 4 direction movement enum.
@@ -19,14 +18,9 @@ namespace Mechanics
     public class MyMoveDirections : MonoBehaviour
     {
         Vector3 m_StartPosition, m_StartForce;
-
         Rigidbody2D m_Rigidbody;
-
-        //Use Enum for easy switching between direction states
-        MoveDirection m_MoveDirection;
-
-        //Use these Vectors for moving Rigidbody components
-        Vector3 m_ResetVector;
+        MoveDirection m_MoveDirection; //Use Enum for easy switching between direction states
+        Vector3 m_ResetVector; //Use these Vectors for moving Rigidbody components
         Vector3 m_UpVector;
         Vector3 m_RightVector;
         public float speed = 5.0f;

@@ -1,31 +1,28 @@
-﻿using Platformer.Gameplay;
-using UnityEngine;
-using static Platformer.Core.Simulation;
+﻿using static Platformer.Core.Simulation;
 
 namespace Platformer.Mechanics
 {
-    public class ShortcutEntrance : MonoBehaviour
+    public class ShortcutEntrance : BasePlayerColliderTrigger
     {
-        internal PlayerController player;
-        public bool shortcutActivated = false;
+        private bool shortcutActivated;
 
-        void OnTriggerEnter2D(Collider2D collider)
+        protected override void DoEnterTriggerAction()
         {
-            player = collider.gameObject.GetComponent<PlayerController>();
-            if (player == null) return;
+            if (shortcutActivated) return;
 
-            if (shortcutActivated == false)
-            {
-                player.DisableInput();
-                player.collider2d.enabled = false;
-                player.spriteRenderer.flipX = false;
+            player.DisableInput();
+            player.DisableCollider();
+            player.FlipPlayerToFaceWest();
 
-                shortcutActivated = true;
+            shortcutActivated = true;
 
-                var a = Schedule<EnablePlayerComponents>(1f);
-                a.player = player;
-            }
+            var epc = Schedule<EnablePlayerCollider>(1f);
+            epc.player = player;
         }
 
+        protected override void DoExitTriggerAction()
+        {
+            //throw new System.NotImplementedException();
+        }
     }
 }

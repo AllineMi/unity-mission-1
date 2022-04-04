@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Mechanics
+namespace Platformer.Mechanics
 {
     public class Elevator : MonoBehaviour
     {

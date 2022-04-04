@@ -1,20 +1,24 @@
 ﻿using UnityEngine;
+using Platformer.Mechanics;
 
 [RequireComponent(typeof(BoxCollider2D), typeof(Jiggler))]
-public class JigglerTrigger : MonoBehaviour
+public class JigglerTrigger : BasePlayerColliderTrigger
 {
-    //TODO to act only if a specific object enters the trigger
     private static float jPower;
 
-// test
-    protected virtual void Awake()
+    private void Awake()
     {
         jPower = GetComponent<Jiggler>().power;
-        GetComponent<Jiggler>().power = .0f;
+        GetComponent<Jiggler>().power = 0f;
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    protected override void DoEnterTriggerAction()
     {
         GetComponent<Jiggler>().power = jPower;
+    }
+
+    protected override void DoExitTriggerAction()
+    {
+        // throw new System.NotImplementedException();
     }
 }

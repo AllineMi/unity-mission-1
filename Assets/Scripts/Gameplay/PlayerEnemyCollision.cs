@@ -4,67 +4,36 @@ using static Platformer.Core.Simulation;
 
 namespace Platformer.Gameplay
 {
-    /// <summary>
-    /// Fired when a Player collides with an Enemy.
-    /// </summary>
-    /// <typeparam name="EnemyCollision"></typeparam>
+    /// <summary> Fired when a Player collides with an Enemy. </summary>
     public class PlayerEnemyCollision : Event<PlayerEnemyCollision>
     {
-        public EnemyController enemy;
-        public PlayerController player;
+        internal EnemyController enemy;
+        internal PlayerController player;
 
         public override void Execute()
         {
-            var willHurtEnemy = player.Bounds.center.y >= enemy.Bounds.max.y;
+            var willHurtEnemy = player.Bounds.center.y >= enemy.BoundsEnemy.max.y;
 
             if (willHurtEnemy)
             {
-                HurtEnemy();
+                EnemyHurt();
             }
             else
             {
-                HurtPlayer();
+                PlayerHurt();
             }
         }
 
-        private void HurtPlayer()
+        private void EnemyHurt()
         {
-            var playerHealth = player.health.currentHP;
-            
-            // if player health is above 0
-            if (player.health.IsAlive)
-            {
-                Schedule<PlayerHurt>();
-            }
-            else
-            {
-                Schedule<PlayerDeath>();
-            }
+            Simulation.Schedule<EnemyHurt>().enemy = enemy;
+            player.Bounce(2);
         }
 
-        private void HurtEnemy()
+        private void PlayerHurt()
         {
-            var enemyHealth = enemy.GetComponent<Health>();
-            
-            if (enemyHealth != null)
-            {
-                enemyHealth.Decrement();
-                if (!enemyHealth.IsAlive)
-                {
-                    Schedule<EnemyDeath>().enemy = enemy;
-                    player.Bounce(2);
-                }
-                // We don't want to bounce, since we will go change player x position 
-                // else
-                // {
-                //     player.Bounce(7);
-                // }
-            }
-            else
-            {
-                Schedule<EnemyDeath>().enemy = enemy;
-                player.Bounce(2);
-            }
+            Simulation.Schedule<PlayerHurt>().player = player;
+            Simulation.Schedule<EnemyHurtedPlayer>().enemy = enemy;
         }
     }
 }

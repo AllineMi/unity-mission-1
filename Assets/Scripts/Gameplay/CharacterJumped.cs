@@ -3,27 +3,16 @@ using Platformer.Mechanics;
 
 namespace Platformer.Gameplay
 {
-    /// <summary>
-    /// Fired when the player performs a Jump.
-    /// </summary>
     public class CharacterJumped : Simulation.Event<CharacterJumped>
     {
-        public PlayerController player;
-        public FriendController friend;
-        private MyCharacterController characterController;
-
+        internal PlayerController player;
+        internal FriendController friend;
         public override void Execute()
         {
-            if (characterController != null)
-            {
-                if (characterController.audioSource && characterController.jumpAudio)
-                    characterController.audioSource.PlayOneShot(characterController.jumpAudio);
-            }
-
             if (player != null)
             {
-                if (player.audioSource && player.jumpAudio)
-                    player.audioSource.PlayOneShot(player.jumpAudio);
+                if (player.audioSourcePlayer && player.jumpAudioPlayer)
+                    player.audioSourcePlayer.PlayOneShot(player.jumpAudioPlayer);
             }
 
             if (friend != null)

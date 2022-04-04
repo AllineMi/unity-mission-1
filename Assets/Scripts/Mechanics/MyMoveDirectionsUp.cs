@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Mechanics
+namespace Platformer.Mechanics
 {
     public class MyMoveDirectionsUp : MonoBehaviour
     {
