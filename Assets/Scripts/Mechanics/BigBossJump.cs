@@ -2,16 +2,15 @@
 
 namespace Platformer.Mechanics
 {
-    public class BigBossJump : Event<BigBossJump>
+    internal class BigBossJump : Event<BigBossJump>
     {
-        public ShortcutZone shortcutZone;
+        internal ShortcutZone shortcutZone;
         private BigBossController bigBoss;
-        private float bigBossJumpVelocity = 5f;
 
         public override void Execute()
         {
             bigBoss = shortcutZone.bigBoss;
-            bigBoss.Jump(bigBossJumpVelocity);
+            bigBoss.Jump();
         }
     }
 }

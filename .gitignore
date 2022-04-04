@@ -74,6 +74,8 @@ crashlytics-build.properties
 
 #IDE metadata
 **.idea/**
+**.idea
+
 
 # Image files and Gimp files
 /Assets/Character/Sprites/Player/PlayerToken/Head/*.meta

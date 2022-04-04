@@ -5,15 +5,16 @@ namespace Platformer.Mechanics
     public class PlayerVictory : Simulation.Event<PlayerVictory>
     {
         public VictoryZone victoryZone;
-        private PlayerController player;
-        private FriendController friend;
+        PlayerController player;
+        FriendController friend;
 
         public override void Execute()
         {
             player = victoryZone.player;
             friend = victoryZone.friend;
-            friend.animator.SetTrigger("victory");
-            player.animator.SetTrigger("victory");
+
+            friend.PlayVictoryAnimation();
+            player.PlayVictoryAnimation();
         }
     }
 }

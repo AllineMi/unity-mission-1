@@ -4,9 +4,8 @@ using Platformer.Mechanics;
 public class PlatformerJumpPad : MonoBehaviour
 {
     public float verticalVelocity;
-    public SpriteRenderer spriteRenderer;
-    public Collider2D collider2d;
-    
+    private SpriteRenderer spriteRenderer;
+
     void OnTriggerEnter2D(Collider2D other)
     {
         var rb = other.attachedRigidbody;

@@ -1,37 +1,30 @@
 using Platformer.Core;
-using static Platformer.Core.Simulation;
-using Platformer.Mechanics;
 using Platformer.Model;
-using UnityEngine;
+using Platformer.Mechanics;
+using static Platformer.Core.Simulation;
 
 namespace Platformer.Gameplay
 {
-    /// <summary>
-    /// This event is triggered when the player character enters a trigger with a VictoryZone component.
-    /// </summary>
-    /// <typeparam name="PlayerEnteredVictoryZone"></typeparam>
+    /// <summary> This event is triggered Player enters the VictoryZone. </summary>
     public class PlayerEnteredVictoryZone : Event<PlayerEnteredVictoryZone>
     {
-        readonly PlatformerModel model = Simulation.GetModel<PlatformerModel>();
+        PlatformerModel model = Simulation.GetModel<PlatformerModel>();
+
+        VictoryCondition victoryCondition;
 
         public VictoryZone victoryZone;
-        private PlayerController player;
-        private FriendController friend;
+        PlayerController player;
 
-        private bool colletedAllTokens;
-        private VictoryCondition victoryCondition;
-        private bool shortcutActivateDeactivated = true;
+        bool shortcutActivateDeactivated = true;
 
         public override void Execute()
         {
             player = victoryZone.player;
-            friend = victoryZone.friend;
-            if (player.token.currentToken >= 20) colletedAllTokens = true;
+
             player.DisableInput();
+
             model.virtualCamera.enabled = false;
 
-            if (friend == null) Debug.Log($"PlayerEnteredVictoryZone: Friend is NULL");
-            if (player == null) Debug.Log($"PlayerEnteredVictoryZone: Player is NULL");
             CheckVictoryCondition();
             Celebrate();
         }
@@ -39,13 +32,13 @@ namespace Platformer.Gameplay
         void CheckVictoryCondition()
         {
             // no shortcut, no token, no flower
-            if (shortcutActivateDeactivated && !colletedAllTokens)
+            if (shortcutActivateDeactivated && !player.token.allTokensCollected)
             {
                 victoryCondition = VictoryCondition.Default;
             }
 
             // no shortcut, yes token, no flower
-            if (shortcutActivateDeactivated && colletedAllTokens)
+            if (shortcutActivateDeactivated && player.token.allTokensCollected)
             {
                 victoryCondition = VictoryCondition.Token;
             }
@@ -61,7 +54,6 @@ namespace Platformer.Gameplay
 
         private void Celebrate()
         {
-            Debug.Log($"PlayerEnteredVictoryZone: victoryCondition {victoryCondition}");
             switch (victoryCondition)
             {
                 case VictoryCondition.Default:
@@ -80,10 +72,7 @@ namespace Platformer.Gameplay
                     var pvt = Schedule<FriendVictoryJump>(2f);
                     pvt.victoryZone = victoryZone;
 
-                    // For some reason, we are unable to get player from the victoryZone
-                    // forcing us to pass it manually here.
-                    // There must be away around, but I will not look at it now.
-                    var pvr = Schedule<PlayerVictoryRun>(2.90f);
+                    var pvr = Schedule<PlayerVictoryRun>(3f);
                     pvr.victoryZone = victoryZone;
                     pvr.player = player;
                     break;

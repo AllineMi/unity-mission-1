@@ -1,21 +1,19 @@
 ﻿using UnityEngine;
-using Platformer.Mechanics;
 
-namespace Mechanics
+namespace Platformer.Mechanics
 {
-    public class ShortcutElevatorZone : MonoBehaviour
+    public class ShortcutElevatorZone : BasePlayerColliderTrigger
     {
-        void OnTriggerEnter2D(Collider2D other)
+        protected override void DoEnterTriggerAction()
         {
-            var rb = other.attachedRigidbody;
-            if (rb == null) return;
-
-            var player = rb.GetComponent<PlayerController>();
-            if (player == null) return;
-
             Debug.Log($"Elevator Zone");
             player.DisableInput();
             player.MoveRight();
+        }
+
+        protected override void DoExitTriggerAction()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

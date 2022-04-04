@@ -1,26 +1,23 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Platformer.Gameplay;
-using UnityEngine;
+﻿using Platformer.Gameplay;
 using static Platformer.Core.Simulation;
 
 namespace Platformer.Mechanics
 {
     /// <summary>
     /// DeathZone components mark a collider which will schedule a
-    /// PlayerEnteredDeathZone event when the player enters the trigger.
+    /// KillPlayer event when the player enters the trigger.
     /// </summary>
-    public class DeathZone : MonoBehaviour
+    public class DeathZone : BasePlayerColliderTrigger
     {
-        void OnTriggerEnter2D(Collider2D collider)
+        protected override void DoEnterTriggerAction()
         {
-            var player = collider.gameObject.GetComponent<PlayerController>();
-            if (player != null)
-            {
-                player.health.Die();
-                var ev = Schedule<PlayerEnteredDeathZone>();
-                ev.deathzone = this;
-            }
+            player.health.Die();
+            Schedule<KillPlayer>().player = player;
+        }
+
+        protected override void DoExitTriggerAction()
+        {
+            // throw new System.NotImplementedException();
         }
     }
 }

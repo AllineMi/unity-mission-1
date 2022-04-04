@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
-using UnityEngine.EventSystems;
 
-namespace Mechanics
+namespace Platformer.Mechanics
 {
     public class MyMoveDirectionsRight : MonoBehaviour
     {
@@ -11,8 +10,6 @@ namespace Mechanics
         /// <remarks>
         /// Use the Right state for an easily identifiable way of moving a GameObject to the right (1 , 0 , 0). This is a state without any predefined functionality. Before using this state, you should define what your GameObject will do in code.
         /// </remarks>
-        /// <example>
-        /// <code>
         //Attach this script to a GameObject with a Rigidbody component. Press the "Move Right" button in Game view to see it in action.
         Vector3 m_StartPosition, m_StartForce;
 
@@ -30,13 +27,11 @@ namespace Mechanics
         {
             //You get the Rigidbody component attached to the GameObject
             m_Rigidbody = GetComponent<Rigidbody2D>();
-            //This starts with the Rigidbody not moving in any direction at all
-            m_MoveDirection = MoveDirection.None;
-
             //These are the GameObject’s starting position and Rigidbody position
             m_StartPosition = transform.position;
             m_StartForce = m_Rigidbody.transform.position;
-
+            //This starts with the Rigidbody not moving in any direction at all
+            m_MoveDirection = MoveDirection.None;
             //This Vector is set to 1 in the x axis (for moving in the right direction)
             m_RightVector = Vector3.right;
             //This Vector is zeroed out for when the Rigidbody should not move
