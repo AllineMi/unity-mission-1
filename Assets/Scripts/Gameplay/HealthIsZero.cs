@@ -1,13 +1,9 @@
 using Platformer.Mechanics;
-using UnityEngine;
 using static Platformer.Core.Simulation;
 
 namespace Platformer.Gameplay
 {
-    /// <summary>
-    /// Fired when the player health reaches 0. This usually would result in a
-    /// PlayerDeath event.
-    /// </summary>
+    /// <summary> Fired when the player health reaches 0. This usually would result in a PlayerDeath event. </summary>
     public class HealthIsZero : Event<HealthIsZero>
     {
         internal Health health;

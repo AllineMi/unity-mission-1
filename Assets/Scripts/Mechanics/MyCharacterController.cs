@@ -11,36 +11,28 @@ namespace Platformer.Mechanics
         public PlatformerModel platformerModel = Simulation.GetModel<PlatformerModel>();
 
         #region AUDIO SHOULD BE ON SPECIF CHARACTER
-
         #endregion
 
         #region ANIMATION
-
         internal Animator animator;
         internal SpriteRenderer spriteRenderer;
-
         #endregion
 
         #region BOUNDS SHOULD BE ON SPECIF CHARACTER
-
         #endregion
 
         #region COLLIDER SHOULD BE ON SPECIF CHARACTER
-
         #endregion
 
         #region JUMP
-
         public bool jump;
         public bool stopJump;
         public float jumpTakeOffSpeed = 10;
         internal JumpStatePlayer jumpState = JumpStatePlayer.Grounded;
         Rigidbody2D rigidBody;
-
         #endregion
 
         #region MOVEMENT
-
         public bool stopMoving;
         public float maxSpeed = 5;
         public float speed = 5;
@@ -49,7 +41,6 @@ namespace Platformer.Mechanics
         Vector3 resetVector;
         Vector3 rightVector;
         Vector3 upVector;
-
         #endregion
 
         protected virtual void Awake()
@@ -157,12 +148,14 @@ namespace Platformer.Mechanics
                 FlipCharacterToFaceEast();
             }
 
+
+
             animator.SetBool("grounded", IsGrounded);
             animator.SetFloat("velocityX", Mathf.Abs(velocity.x) / maxSpeed);
 
             targetVelocity = move * maxSpeed;
-            // }
         }
+
 
         internal void MoveRight()
         {

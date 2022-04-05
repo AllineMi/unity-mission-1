@@ -3,12 +3,8 @@ using Platformer.Gameplay;
 
 namespace Platformer.Mechanics
 {
-    /// <summary>
-    /// When Player enters the Shortcutzone,
-    /// Big Boss will jump towards the Player,
-    /// Player will turn to face Big Boss then Big Boss will become bigger,
-    /// Player will get scared and start running.
-    /// </summary>
+    /// <summary> When Player enters the Shortcutzone, Big Boss will jump towards the Player, Player will turn to
+    /// face Big Boss then Big Boss will become bigger, Player will get scared and start running. </summary>
     public class ShortcutZone : BasePlayerColliderTrigger
     {
         public BigBossController bigBoss;

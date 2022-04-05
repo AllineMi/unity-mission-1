@@ -72,7 +72,6 @@ namespace Platformer.Mechanics
         /// Teleport to some position.
         /// </summary>
         /// <param name="position"></param>
-        /// <param name="playerController"></param>
         public void TeleportHurt(Vector3 position)
         {
             body.position = position;

@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.EventSystems;
 
 namespace Platformer.Mechanics
 {
@@ -11,8 +10,7 @@ namespace Platformer.Mechanics
         /// <remarks>
         /// Use the None state for an easily identifiable way of stopping, resetting or initialising a GameObject's movement. This is a state without any predefined functionality. Before using this state, you should define what your GameObject will do in code.
         /// </remarks>
-        /// <example>
-        /// <code>
+
         //Attach this script to a GameObject with a Rigidbody attached. This script starts off on the ModeDirection.None state but changes depending on buttons you press.
         Vector3 m_StartPosition, m_StartForce;
 
