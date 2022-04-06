@@ -11,8 +11,8 @@ namespace Platformer.Mechanics
         {
             friend = victoryZone.friend;
 
+            friend.PlayJumpAnimation();
             friend.speed = 1f;
-            friend.jumpState = JumpStatePlayer.PrepareToJump;
             friend.MoveLeft();
         }
     }

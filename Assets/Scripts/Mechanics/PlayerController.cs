@@ -11,12 +11,11 @@ namespace Platformer.Mechanics
     /// </summary>
     public class PlayerController : KinematicObject
     {
-        public Bounds Bounds => collider2dPlayer.bounds;
         readonly PlatformerModel modelPlayer = Simulation.GetModel<PlatformerModel>();
+        private float defaultValue;
 
         #region ANIMATION VARIABLES
 
-        // ANIMATION VARIABLES
         internal Animator animatorPlayer;
         internal SpriteRenderer spriteRendererPlayer;
 
@@ -24,7 +23,6 @@ namespace Platformer.Mechanics
 
         #region AUDIO VARIABLES
 
-        // AUDIO VARIABLES
         [Header("AUDIO SETTINGS ----------------------")]
         public AudioClip jumpAudioPlayer;
 
@@ -34,45 +32,55 @@ namespace Platformer.Mechanics
 
         #endregion
 
+        #region BOUNDS
+
+        public Bounds Bounds => collider2dPlayer.bounds;
+
+        #endregion
+
         #region COLLIDER VARIABLES
 
         public Collider2D collider2dPlayer;
 
         #endregion
 
+        #region HEALTH VARIABLES
+
+        [Header("HEALTH / TOKEN SETTINGS ----------------------")]
+        public Health health;
+
+        #endregion
+
         #region HURT VARIABLES
 
-        // HURT VARIABLES
         [Header("HURT SETTINGS ----------------------")]
         public float hurtJumpTakeOffSpeedPlayer = 5f;
 
         public float hurtMaxSpeedPlayer = 2f;
-        bool playerHurt;
+        internal bool playerHurt;
 
         #endregion
 
         #region JUMP VARIABLES
 
-        // JUMP VARIABLES
         [Header("JUMP SETTINGS ----------------------")]
         public JumpStatePlayer jumpStatePlayer = JumpStatePlayer.Grounded;
 
-        public float jumpTakeOffSpeedPlayer = 5;
         bool jumpPlayer;
         bool stopJumpPlayer;
+        float jumpTakeOffSpeedPlayer = 7;
 
         #endregion
 
         #region MOVEMENT VARIABLES
 
-        // MOVEMENT VARIABLES
         [Header("MOVEMENT SETTINGS ----------------------")]
         public bool controlEnabledPlayer = true;
 
         public float speed = 5;
         public float maxSpeed = 5;
         MoveDirectionPlayer moveDirectionPlayer;
-        Rigidbody2D rigidbodyPlayer;
+        public Rigidbody2D rigidbodyPlayer;
         Vector2 movePlayer;
         Vector3 resetVectorPlayer;
         Vector3 rightVectorPlayer;
@@ -82,7 +90,6 @@ namespace Platformer.Mechanics
 
         #region SCARED VARIABLES
 
-        // SCARED VARIABLES
         internal bool playerScared;
         internal bool playerJumpScaredRan;
 
@@ -90,19 +97,16 @@ namespace Platformer.Mechanics
 
         #region SHORTCUT VARIABLES
 
-        // SHORTCUT VARIABLES
         [Header("SHORTCUT SETTINGS ----------------------")]
         public bool playerStayOnElevator;
 
         #endregion
 
-        #region HEALTH / TOKEN VARIABLES
+        #region TOKEN VARIABLES
 
-        // HEALTH / TOKEN VARIABLES
-        [Header("HEALTH / TOKEN SETTINGS ----------------------")]
-        public Health health;
-
+        [Header("TOKEN SETTINGS ----------------------")]
         public Token token;
+
         public RuntimeAnimatorController playerControllerTokens;
 
         #endregion
@@ -119,6 +123,9 @@ namespace Platformer.Mechanics
             // COLLIDER
             collider2dPlayer = GetComponent<Collider2D>();
 
+            // HEALTH
+            health = GetComponent<Health>();
+
             // MOVEMENT
             rigidbodyPlayer = GetComponent<Rigidbody2D>();
             //This starts with the Rigidbody not moving in any direction at all
@@ -130,13 +137,14 @@ namespace Platformer.Mechanics
             //This Vector is zeroed out for when the Rigidbody should not move
             resetVectorPlayer = Vector3.zero;
 
-            // HEALTH / TOKEN
-            health = GetComponent<Health>();
+            // TOKEN
             token = GetComponent<Token>();
         }
 
         protected override void Update()
         {
+            #region controlEnabledTrue
+
             if (controlEnabledPlayer)
             {
                 movePlayer.x = Input.GetAxis("Horizontal");
@@ -153,56 +161,41 @@ namespace Platformer.Mechanics
                 movePlayer.x = 0;
             }
 
+            #endregion
+
+            #region controlEnabledFalse
+
             if (!controlEnabledPlayer)
             {
-                //This switches the direction depending on button presses
                 switch (moveDirectionPlayer)
                 {
-                    //The starting state which resets the object
-                    case MoveDirectionPlayer.None:
-                        //This resets the velocity of the Rigidbody
+                    case MoveDirectionPlayer.None: // This resets the velocity of the Rigidbody
                         rigidbodyPlayer.velocity = resetVectorPlayer;
-                        //m_Rigidbody.velocity = new Vector2(0f,0f);
                         break;
 
-                    //This is for moving in an upwards direction
-                    case MoveDirectionPlayer.Up:
-                        //Change the velocity so that the Rigidbody travels upwards
-                        //m_Rigidbody.velocity = m_PlayerUpVector * speed;
-                        velocity.y = 1f;
-                        break;
-
-                    //This is for moving left
-                    case MoveDirectionPlayer.Left:
-                        //This moves the Rigidbody to the left (minus right Vector)
+                    case MoveDirectionPlayer.Left: // This moves the Rigidbody to the left (minus right Vector)
                         rigidbodyPlayer.velocity = -rightVectorPlayer * maxSpeed;
                         break;
 
-                    //This is for moving right
-                    case MoveDirectionPlayer.Right:
-                        //This moves the Rigidbody to the right
+                    case MoveDirectionPlayer.Right: // This moves the Rigidbody to the right
                         rigidbodyPlayer.velocity = rightVectorPlayer * maxSpeed;
                         velocity.x = maxSpeed;
                         break;
 
-                    //This is for moving down
-                    case MoveDirectionPlayer.Down:
-                        //This moves the Rigidbody down
+                    case MoveDirectionPlayer.Up: // Change the velocity so that the Rigidbody travels upwards
+                        velocity.y = 1f;
+                        break;
+
+                    case MoveDirectionPlayer.Down: // This moves the Rigidbody down
                         rigidbodyPlayer.velocity = -upVectorPlayer * maxSpeed;
                         break;
                 }
             }
 
+            #endregion
+
             UpdateJumpStatePlayer();
             base.Update();
-        }
-
-        // TODO TO CHECK
-        public enum TokenSpriteType
-        {
-            SpriteNormal,
-            SpriteToken10,
-            SpriteToken20
         }
 
         #region ANIMATION
@@ -214,7 +207,7 @@ namespace Platformer.Mechanics
 
         internal void PlayVictoryRunAnimation()
         {
-            animatorPlayer.SetTrigger("victoryRun");
+            animatorPlayer.SetTrigger("run");
         }
 
         internal void PlayVictoryAnimation()
@@ -227,14 +220,14 @@ namespace Platformer.Mechanics
             animatorPlayer.SetTrigger("hurt");
         }
 
-        /// <summary> SpriteRenderer flip X will be true </summary>
-        public void FlipPlayerToFaceEast()
+        /// <summary> Checks SpriteRenderer flip X. Player will face West. </summary>
+        public void FlipPlayerToFaceWest()
         {
             spriteRendererPlayer.flipX = true;
         }
 
-        /// <summary> SpriteRenderer flip X will be false </summary>
-        internal void FlipPlayerToFaceWest()
+        /// <summary> Unchecks SpriteRenderer flip X. Player will face east. </summary>
+        internal void FlipPlayerToFaceEast()
         {
             spriteRendererPlayer.flipX = false;
         }
@@ -274,6 +267,26 @@ namespace Platformer.Mechanics
 
         #endregion
 
+        #region HURT
+
+        /// <summary> If Player facing East, if spriteRenderer Flip X False </summary>
+        internal void JumpHurtLeft()
+        {
+            maxSpeed = hurtMaxSpeedPlayer;
+            Jump(hurtJumpTakeOffSpeedPlayer);
+            MoveLeft();
+        }
+
+        /// <summary> If Player facing West, if spriteRenderer Flip X True </summary>
+        internal void JumpHurtRight()
+        {
+            maxSpeed = hurtMaxSpeedPlayer;
+            Jump(hurtJumpTakeOffSpeedPlayer);
+            MoveRight();
+        }
+
+        #endregion
+
         #region JUMP
 
         void UpdateJumpStatePlayer()
@@ -307,9 +320,6 @@ namespace Platformer.Mechanics
                     if (playerScared || playerHurt)
                     {
                         StopMoving();
-                        //animatorPlayer.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
-                        playerScared = false;
-                        Simulation.Schedule<EnablePlayerInput>(1f).player = this;
                         ResetPlayerJumpTakeOffSpeed();
                         ResetSpeedPlayer();
                     }
@@ -318,47 +328,22 @@ namespace Platformer.Mechanics
             }
         }
 
-        void ResetPlayerJumpTakeOffSpeed()
-        {
-            jumpTakeOffSpeedPlayer = 7f;
-        }
-
-        internal void JumpScare()
-        {
-            playerScared = true;
-            playerJumpScaredRan = true;
-            animatorPlayer.SetTrigger("hurt");
-            jumpStatePlayer = JumpStatePlayer.PrepareToJump;
-            MoveRight();
-            jumpTakeOffSpeedPlayer = 1f;
-        }
-
-        internal void JumpHurtLeft()
-        {
-            playerHurt = true;
-            maxSpeed = hurtMaxSpeedPlayer;
-            jumpTakeOffSpeedPlayer = hurtJumpTakeOffSpeedPlayer;
-            Jump();
-            MoveLeft();
-        }
-
-        internal void JumpHurtRight()
-        {
-            playerHurt = true;
-            maxSpeed = hurtMaxSpeedPlayer;
-            jumpTakeOffSpeedPlayer = hurtJumpTakeOffSpeedPlayer;
-            Jump();
-            MoveRight();
-        }
-
         void Jump(float characterJumpVelocity)
         {
+            defaultValue = jumpTakeOffSpeedPlayer;
+            jumpTakeOffSpeedPlayer = characterJumpVelocity;
             jumpStatePlayer = JumpStatePlayer.PrepareToJump;
         }
 
         void Jump()
         {
             Jump(jumpTakeOffSpeedPlayer);
+        }
+
+        void ResetPlayerJumpTakeOffSpeed()
+        {
+            jumpTakeOffSpeedPlayer = defaultValue;
+            defaultValue = 0;
         }
 
         #endregion
@@ -382,9 +367,29 @@ namespace Platformer.Mechanics
             }
 
             if (movePlayer.x > 0.01f || rigidbodyPlayer.velocity.x > 0.01f)
-                FlipPlayerToFaceWest();
-            else if (movePlayer.x < -0.01f || rigidbodyPlayer.velocity.x > 0.01f)
+            {
                 FlipPlayerToFaceEast();
+            }
+            else if (movePlayer.x < -0.01f || rigidbodyPlayer.velocity.x < -0.01f)
+            {
+                FlipPlayerToFaceWest();
+            }
+
+            if (!controlEnabledPlayer)
+            {
+                if (playerHurt || playerScared)
+                {
+                    if (rigidbodyPlayer.velocity.x < -0.01f)
+                    {
+                        FlipPlayerToFaceEast();
+                    }
+
+                    if (rigidbodyPlayer.velocity.x > 0.01f)
+                    {
+                        FlipPlayerToFaceWest();
+                    }
+                }
+            }
 
             animatorPlayer.SetBool("grounded", IsGrounded);
             animatorPlayer.SetFloat("velocityX", Mathf.Abs(velocity.x) / maxSpeed);
@@ -430,6 +435,20 @@ namespace Platformer.Mechanics
         internal void DisableInput()
         {
             controlEnabledPlayer = false;
+        }
+
+        #endregion
+
+        #region SCARED
+
+        internal void JumpScare()
+        {
+            playerScared = true;
+            playerJumpScaredRan = true;
+            animatorPlayer.SetTrigger("hurt");
+            jumpStatePlayer = JumpStatePlayer.PrepareToJump;
+            MoveRight();
+            jumpTakeOffSpeedPlayer = 1f;
         }
 
         #endregion

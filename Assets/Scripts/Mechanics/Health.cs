@@ -8,7 +8,7 @@ namespace Platformer.Mechanics
         /// <summary> The maximum hit points for the entity. </summary>
         int maxHP = 10;
 
-        int currentHP;
+        public int currentHP;
 
         /// <summary> Indicates if the entity should be considered 'alive'. </summary>
         internal bool IsAlive => currentHP > 0;

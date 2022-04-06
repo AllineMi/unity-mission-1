@@ -1,7 +1,7 @@
 using Platformer.Core;
 using Platformer.Mechanics;
 
-namespace Platformer.Gameplay
+namespace Gameplay
 {
     /// <summary> This event is fired when user input should be enabled. </summary>
     public class EnablePlayerInput : Simulation.Event<EnablePlayerInput>

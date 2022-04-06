@@ -22,8 +22,7 @@ namespace Platformer.Mechanics
             if (!bigBoss.scareJump)
                 MakeBigBossJump();
 
-            if (bigBoss.scareJump && !bigBoss.canBecomeBigger &&
-                bigBoss.jumpState == JumpStatePlayer.Landed)
+            if (bigBoss.scareJump && !bigBoss.canBecomeBigger && bigBoss.jumpState == JumpStatePlayer.Landed)
                 MakeBigBossBigger();
 
             if (bigBoss.canBecomeBigger && bigBoss.scareJump && player.playerScared == false &&
@@ -41,7 +40,7 @@ namespace Platformer.Mechanics
 
         private void MakeBigBossBigger()
         {
-            player.FlipPlayerToFaceEast();
+            player.FlipPlayerToFaceWest();
             var bbb = Simulation.Schedule<BigBossBigger>(2f);
             bbb.shortcutZone = this;
         }

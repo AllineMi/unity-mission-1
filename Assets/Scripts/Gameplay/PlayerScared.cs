@@ -1,4 +1,5 @@
-﻿using Platformer.Core;
+﻿using Gameplay;
+using Platformer.Core;
 using Platformer.Mechanics;
 
 namespace Platformer.Gameplay
@@ -12,6 +13,8 @@ namespace Platformer.Gameplay
         {
             player = shortcutZone.player;
             player.JumpScare();
+            Simulation.Schedule<EnablePlayerInput>(1f).player = player;
+            Simulation.Schedule<PlayerScaredFalse>(1f).player = player;
         }
     }
 }

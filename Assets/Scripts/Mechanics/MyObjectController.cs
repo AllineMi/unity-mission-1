@@ -63,7 +63,6 @@ namespace Platformer.Mechanics
 
                 //This is for moving in an upwards direction
                 case MyObjectMoveDirection.Up:
-                    Debug.Log($"MyMoveObjectDirection.Up: {MyObjectMoveDirection.Up}");
                     //Change the velocity so that the Rigidbody travels upwards
                     m_MyObjectRigidbody.velocity = m_MyObjectUpVector * speed;
                     break;
@@ -76,7 +75,6 @@ namespace Platformer.Mechanics
 
                 //This is for moving right
                 case MyObjectMoveDirection.Right:
-                    Debug.Log($"Entered MyObjectMoveDirection.Right");
                     //This moves the Rigidbody to the right
                     m_MyObjectRigidbody.velocity = m_MyObjectRightVector * speed;
                     velocity.x = speed;
@@ -92,7 +90,6 @@ namespace Platformer.Mechanics
 
         public void MoveUp()
         {
-            Debug.Log($"MoveUp");
             m_MyObjectMoveDirection = MyObjectMoveDirection.Up;
         }
 
@@ -108,7 +105,6 @@ namespace Platformer.Mechanics
 
         public void MoveRight()
         {
-            Debug.Log($"MoveRight");
             m_MyObjectMoveDirection = MyObjectMoveDirection.Right;
         }
 

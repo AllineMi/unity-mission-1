@@ -9,7 +9,6 @@ namespace Platformer.Gameplay
         public PlayerController player;
         public FriendController friend;
         public MyCharacterController characterController;
-        public BigBossController bigBossController;
 
         public override void Execute()
         {

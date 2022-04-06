@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Platformer.Mechanics
 {
@@ -35,20 +34,6 @@ namespace Platformer.Mechanics
 
             base.Awake();
         }
-
-        #region ANIMATION
-
-        internal void PlayVictoryRunAnimation()
-        {
-            animator.SetTrigger("victoryRun");
-        }
-
-        internal void PlayVictoryAnimation()
-        {
-            animator.SetTrigger("victory");
-        }
-
-        #endregion
 
         #region JUMP
 
