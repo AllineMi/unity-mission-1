@@ -1,3 +1,4 @@
+using Gameplay;
 using Platformer.Core;
 using Platformer.Model;
 using Platformer.Mechanics;
@@ -27,7 +28,7 @@ namespace Platformer.Gameplay
             player.FlipPlayerToFaceWest();
             // Camera will follow player when respawned
             Simulation.Schedule<CameraEnable>().player = player;
-            Simulation.Schedule<EnablePlayerInput>(2f);
+            Simulation.Schedule<EnablePlayerInput>(2f).player = player;
         }
     }
 }

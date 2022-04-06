@@ -1,13 +1,11 @@
-﻿using Platformer.Core;
+﻿using Gameplay;
+using Platformer.Core;
 using Platformer.Gameplay;
 using UnityEngine;
 
 namespace Platformer.Mechanics
 {
-    /// <summary>
-    /// This event is triggered when the player character enters a trigger with a TeleportPad component.
-    /// </summary>
-    /// <typeparam name="Teletransportation"></typeparam>
+    /// <summary> This event is triggered when the player character enters a trigger with a TeleportPad component. </summary>
     public class Teletransportation : Simulation.Event<Teletransportation>
     {
         internal GameObject destinationPad;

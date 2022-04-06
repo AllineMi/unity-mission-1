@@ -1,5 +1,5 @@
-﻿using Platformer.Core;
-using UnityEngine;
+﻿using UnityEngine;
+using Platformer.Core;
 
 namespace Platformer.Mechanics
 {
@@ -20,7 +20,7 @@ namespace Platformer.Mechanics
 
         protected override void DoExitTriggerAction()
         {
-            throw new System.NotImplementedException();
+            // throw new System.NotImplementedException();
         }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.EventSystems;
 
 namespace Platformer.Mechanics
 {
@@ -11,8 +10,7 @@ namespace Platformer.Mechanics
         /// <remarks>
         /// Use the Down state for an easily identifiable way of moving a GameObject downwards (0 , -1 , 0). This is a state without any predefined functionality. Before using this state, you should define what your GameObject will do in code.
         /// </remarks>
-        /// <example>
-        /// <code>
+
         //Attach this script to a GameObject with a Rigidbody component. Press the "Move Down" button in Game view to see it in action.
         Vector3 m_StartPosition, m_StartForce;
 

@@ -5,7 +5,7 @@ namespace Platformer.Mechanics
     /// <summary> When player collects more than 10 tokens player sprite should get rounder </summary>
     public class Token : MonoBehaviour
     {
-        public bool allTokensCollected => currentToken >= maxToken;
+        public bool allTokensCollected => currentToken == maxToken;
 
         /// <summary> The maximum token points </summary>
         private const int maxToken = 20;

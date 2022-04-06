@@ -60,6 +60,7 @@ namespace Platformer.Gameplay
                 {
                     var pv = Schedule<PlayerVictory>();
                     pv.victoryZone = victoryZone;
+
                     var pvr = Schedule<PlayerVictoryRun>(3f);
                     pvr.victoryZone = victoryZone;
                     break;

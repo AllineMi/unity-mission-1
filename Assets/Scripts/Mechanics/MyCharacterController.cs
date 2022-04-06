@@ -10,10 +10,6 @@ namespace Platformer.Mechanics
     {
         public PlatformerModel platformerModel = Simulation.GetModel<PlatformerModel>();
 
-        #region AUDIO SHOULD BE ON SPECIF CHARACTER
-
-        #endregion
-
         #region ANIMATION
 
         internal Animator animator;
@@ -21,12 +17,14 @@ namespace Platformer.Mechanics
 
         #endregion
 
-        #region BOUNDS SHOULD BE ON SPECIF CHARACTER
+        #region AUDIO SHOULD BE ON SPECIF CHARACTER
 
         #endregion
 
-        #region COLLIDER SHOULD BE ON SPECIF CHARACTER
+        #region BOUNDS SHOULD BE ON SPECIF CHARACTER
+        #endregion
 
+        #region COLLIDER SHOULD BE ON SPECIF CHARACTER
         #endregion
 
         #region JUMP
@@ -87,6 +85,21 @@ namespace Platformer.Mechanics
         internal void FlipCharacterToFaceWest()
         {
             spriteRenderer.flipX = false;
+        }
+
+        internal void PlayRunAnimation()
+        {
+            animator.SetTrigger("run");
+        }
+
+        internal void PlayJumpAnimation()
+        {
+            jumpState = JumpStatePlayer.PrepareToJump;
+        }
+
+        internal void PlayVictoryAnimation()
+        {
+            animator.SetTrigger("victory");
         }
 
         #endregion
@@ -161,7 +174,6 @@ namespace Platformer.Mechanics
             animator.SetFloat("velocityX", Mathf.Abs(velocity.x) / maxSpeed);
 
             targetVelocity = move * maxSpeed;
-            // }
         }
 
         internal void MoveRight()

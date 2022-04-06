@@ -11,8 +11,10 @@ namespace Platformer.Mechanics
     {
         [Tooltip("Frames per second at which tokens are animated.")]
         public float frameRate = 12;
+
         [Tooltip("Instances of tokens which are animated. If empty, token instances are found and loaded at runtime.")]
         public TokenInstance[] tokens;
+
         float nextFrameTime;
 
         void Awake()
@@ -23,6 +25,7 @@ namespace Platformer.Mechanics
             {
                 FindAllTokensInScene();
             }
+
             //Register all tokens so they can work with this controller.
             for (var i = 0; i < tokens.Length; i++)
             {
@@ -55,6 +58,7 @@ namespace Platformer.Mechanics
                     }
                 }
             }
+
             //calculate the time of the next frame.
             nextFrameTime += 1f / frameRate;
         }

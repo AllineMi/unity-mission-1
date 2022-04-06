@@ -7,18 +7,16 @@ namespace Platformer.Mechanics
     {
         /// <summary> For development only. Used when I need to move the character and then put it back. </summary>
         private Vector3 bigBossDefaultPosition = new Vector3(-10.6068935f, -12.826f, -0.401916862f);
+
+        #region BOUNDS VARIABLES
+
         public Bounds BoundsBigBoss => collider2dBigBoss.bounds;
+
+        #endregion
 
         #region COLLIDER VARIABLES
 
         public Collider2D collider2dBigBoss;
-
-        #endregion
-
-        #region JUMP VARIABLES
-
-        // For Scaring the Player
-        internal bool scareJump;
 
         #endregion
 
@@ -37,6 +35,13 @@ namespace Platformer.Mechanics
 
         #endregion
 
+        #region SCARING JUMP VARIABLES
+
+        // For Scaring the Player
+        internal bool scareJump;
+
+        #endregion
+
         protected override void Awake()
         {
             collider2dBigBoss = GetComponent<Collider2D>();
@@ -48,16 +53,6 @@ namespace Platformer.Mechanics
             if (canBecomeBigger) BecomeBigger();
             base.Update();
         }
-
-        #region JUMP
-
-        public override void Jump()
-        {
-            jumpState = JumpStatePlayer.PrepareToJump;
-            MoveRight();
-        }
-
-        #endregion
 
         #region SCALING
 
@@ -109,6 +104,16 @@ namespace Platformer.Mechanics
             canBecomeBigger = false;
             timer = 0.0f;
             targetPosition = new Vector3();
+        }
+
+        #endregion
+
+        #region SCARING JUMP
+
+        public override void Jump()
+        {
+            jumpState = JumpStatePlayer.PrepareToJump;
+            MoveRight();
         }
 
         #endregion

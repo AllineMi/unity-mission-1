@@ -12,7 +12,7 @@ namespace Platformer.Mechanics
 
             player.DisableInput();
             player.DisableCollider();
-            player.FlipPlayerToFaceWest();
+            player.FlipPlayerToFaceEast();
 
             shortcutActivated = true;
 

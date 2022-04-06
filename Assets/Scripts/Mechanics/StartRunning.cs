@@ -1,13 +1,13 @@
-﻿using Platformer.Core;
-using UnityEngine;
+﻿using UnityEngine;
+using Platformer.Core;
 
 namespace Platformer.Mechanics
 {
     public class StartRunning : Simulation.Event<StartRunning>
     {
-        public PlayerController player;
-        public BigBossController bigBoss;
         public ShortcutZone shortcutZone;
+        private PlayerController player;
+        private BigBossController bigBoss;
 
         public override void Execute()
         {

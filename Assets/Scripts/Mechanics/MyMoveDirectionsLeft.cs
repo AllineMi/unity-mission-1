@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.EventSystems;
 
 namespace Platformer.Mechanics
 {
@@ -13,8 +12,7 @@ namespace Platformer.Mechanics
         /// This is a state without any predefined functionality. Before using this state, you should define what your
         /// GameObject will do in code.
         /// </remarks>
-        /// <example>
-        /// <code>
+
         //Assign this script to a visible GameObject (with a Rigidbody attached) to see this in action
         Vector3 m_StartPosition, m_StartForce;
 

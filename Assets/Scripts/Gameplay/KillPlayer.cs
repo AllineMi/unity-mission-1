@@ -21,7 +21,7 @@ namespace Platformer.Gameplay
 
             player.PlayHurtAnimation();
             player.PlayDeadAnimationActive(true);
-            Simulation.Schedule<PlayerSpawn>(1);
+            Simulation.Schedule<PlayerSpawn>(2);
         }
     }
 }

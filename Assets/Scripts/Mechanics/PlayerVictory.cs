@@ -13,8 +13,8 @@ namespace Platformer.Mechanics
             player = victoryZone.player;
             friend = victoryZone.friend;
 
-            friend.PlayVictoryAnimation();
             player.PlayVictoryAnimation();
+            friend.PlayVictoryAnimation();
         }
     }
 }

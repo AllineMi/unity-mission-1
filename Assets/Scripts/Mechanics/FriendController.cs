@@ -2,10 +2,6 @@
 
 namespace Platformer.Mechanics
 {
-    /// <summary>
-    /// This is the main class used to implement control of the player.
-    /// It is a superset of the AnimationController class, but is inlined to allow for any kind of customisation.
-    /// </summary>
     [RequireComponent(typeof(Collider2D))]
     public class FriendController : MyCharacterController
     {
@@ -38,20 +34,6 @@ namespace Platformer.Mechanics
 
             base.Awake();
         }
-
-        #region ANIMATION
-
-        internal void PlayVictoryRunAnimation()
-        {
-            animator.SetTrigger("victoryRun");
-        }
-
-        internal void PlayVictoryAnimation()
-        {
-            animator.SetTrigger("victory");
-        }
-
-        #endregion
 
         #region JUMP
 

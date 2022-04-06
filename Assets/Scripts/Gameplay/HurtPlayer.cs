@@ -1,5 +1,6 @@
 ﻿using Platformer.Core;
 using Platformer.Mechanics;
+using UnityEngine;
 
 namespace Platformer.Gameplay
 {
@@ -9,7 +10,6 @@ namespace Platformer.Gameplay
 
         public override void Execute()
         {
-            player.DisableInput();
             player.PlayHurtAnimation();
 
             if (player.audioSourcePlayer && player.ouchAudioPlayer)
@@ -18,13 +18,13 @@ namespace Platformer.Gameplay
             }
 
             // When the player gets hurt, it will move away from the enemy.
-            if (player.spriteRendererPlayer.flipX) // Player facing West
-            {
-                player.JumpHurtRight();
-            }
-            else // Player facing East
+            if (!player.spriteRendererPlayer.flipX) // Player facing East
             {
                 player.JumpHurtLeft();
+            }
+            else // Player facing West
+            {
+                player.JumpHurtRight();
             }
         }
     }
