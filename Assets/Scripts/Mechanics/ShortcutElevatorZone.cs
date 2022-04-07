@@ -10,7 +10,7 @@
 
         protected override void DoExitTriggerAction()
         {
-            throw new System.NotImplementedException();
+            // throw new System.NotImplementedException();
         }
     }
 }

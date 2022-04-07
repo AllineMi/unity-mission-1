@@ -8,7 +8,7 @@ namespace Platformer.Gameplay
     {
         public PlayerController player;
         public FriendController friend;
-        public MyCharacterController characterController;
+        public BaseController baseController;
 
         public override void Execute()
         {

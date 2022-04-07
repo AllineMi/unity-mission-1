@@ -3,7 +3,7 @@
 namespace Platformer.Mechanics
 {
     [RequireComponent(typeof(Collider2D))]
-    public class FriendController : MyCharacterController
+    public class FriendController : BaseController
     {
         #region AUDIO
 

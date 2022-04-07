@@ -1,6 +1,5 @@
 ﻿using Platformer.Core;
 using Platformer.Mechanics;
-using UnityEngine;
 
 namespace Platformer.Gameplay
 {
@@ -18,7 +17,7 @@ namespace Platformer.Gameplay
             }
 
             // When the player gets hurt, it will move away from the enemy.
-            if (!player.spriteRendererPlayer.flipX) // Player facing East
+            if (!player.spriteRenderer.flipX) // Player facing East
             {
                 player.JumpHurtLeft();
             }
