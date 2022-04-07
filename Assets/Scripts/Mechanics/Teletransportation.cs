@@ -1,7 +1,6 @@
 ﻿using Gameplay;
-using Platformer.Core;
-using Platformer.Gameplay;
 using UnityEngine;
+using Platformer.Core;
 
 namespace Platformer.Mechanics
 {

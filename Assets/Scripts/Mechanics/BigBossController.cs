@@ -3,7 +3,7 @@
 namespace Platformer.Mechanics
 {
     [RequireComponent(typeof(Collider2D))]
-    public class BigBossController : MyCharacterController
+    public class BigBossController : BaseController
     {
         /// <summary> For development only. Used when I need to move the character and then put it back. </summary>
         private Vector3 bigBossDefaultPosition = new Vector3(-10.6068935f, -12.826f, -0.401916862f);

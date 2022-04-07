@@ -23,9 +23,9 @@ namespace Platformer.Gameplay
 
             player.health.Increment();
             player.Teleport(model.spawnPoint.transform.position);
-            player.jumpStatePlayer = JumpStatePlayer.Grounded;
+            player.jumpState = JumpStatePlayer.Grounded;
             player.PlayDeadAnimationActive(false);
-            player.FlipPlayerToFaceWest();
+            player.FlipPlayerToFaceEast();
             // Camera will follow player when respawned
             Simulation.Schedule<CameraEnable>().player = player;
             Simulation.Schedule<EnablePlayerInput>(2f).player = player;

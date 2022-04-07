@@ -13,10 +13,10 @@ namespace Platformer.Mechanics
             player = victoryZone.player;
             friend = victoryZone.friend;
 
-            player.PlayVictoryRunAnimation();
+            player.PlayRunAnimation();
             friend.PlayRunAnimation();
 
-            player.maxSpeed = 3f;
+            player.speed = 3f;
             friend.speed = 3f;
 
             player.MoveRight();

@@ -6,7 +6,7 @@ namespace Platformer.Mechanics
 {
     /// <summary> A simple controller for enemies. Provides movement control over a patrol path. </summary>
     [RequireComponent(typeof(Collider2D))]
-    public class EnemyController : MyCharacterController
+    public class EnemyController : BaseController
     {
         #region AUDIO VARIABLES
 
