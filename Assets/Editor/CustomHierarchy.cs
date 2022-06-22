@@ -14,6 +14,8 @@ namespace Editor
         private static readonly Color victoryZone = new Color(0f, 0.5f, 0f, 0.3f);
         private static readonly Color shortcutZone = new Color(1f, 0.92f, 0.016f, 0.3f);
         private static readonly Color deathZone = new Color(1f, 0f, 0f, 0.3f);
+        private static readonly Color cutscenes = new Color(0f, 0f, 0f, 0.3f);
+        private static readonly Color cutscenes1 = new Color(0f, 0f, 0f, 0.3f);
 
         private static readonly Dictionary<String, Color> _myColors = new Dictionary<string, Color>
         {
@@ -22,7 +24,8 @@ namespace Editor
             {"Friend", friendColor},
             {"ShortcutZone", shortcutZone},
             {"VictoryZone", victoryZone},
-            {"DeathZone", deathZone}
+            {"DeathZone", deathZone},
+            {"Cutscenes", cutscenes}
         };
 
         static CustomHierarchy()

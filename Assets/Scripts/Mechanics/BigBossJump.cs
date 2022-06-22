@@ -10,7 +10,7 @@ namespace Platformer.Mechanics
         public override void Execute()
         {
             bigBoss = shortcutZone.bigBoss;
-            bigBoss.Jump();
+            bigBoss.ScaryJump();
         }
     }
 }

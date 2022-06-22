@@ -23,6 +23,11 @@ namespace Platformer.Model
         public PlayerController player;
 
         /// <summary>
+        /// The main component which controls the friend sprite.
+        /// </summary>
+        public FriendController friend;
+
+        /// <summary>
         /// The spawn point in the scene.
         /// </summary>
         public Transform spawnPoint;

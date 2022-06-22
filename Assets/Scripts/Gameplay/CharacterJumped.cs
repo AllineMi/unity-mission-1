@@ -1,24 +1,32 @@
 using Platformer.Core;
 using Platformer.Mechanics;
+using Platformer.Model;
+using UnityEngine;
+using Object = System.Object;
 
 namespace Platformer.Gameplay
 {
     public class CharacterJumped : Simulation.Event<CharacterJumped>
     {
-        internal PlayerController player;
-        internal FriendController friend;
+        PlayerController player;
+        FriendController friend;
+        public BaseController baseController;
+
         public override void Execute()
         {
-            if (player != null)
+            player = baseController.platformerModel.player;
+            friend = baseController.platformerModel.friend;
+
+            if (player != null && player.jumpState == JumpState.InFlight)
             {
                 if (player.audioSourcePlayer && player.jumpAudioPlayer)
-                    player.audioSourcePlayer.PlayOneShot(player.jumpAudioPlayer);
+                    player.PlayJumpAudio();
             }
 
-            if (friend != null)
+            if (friend != null && friend.jumpState == JumpState.InFlight)
             {
                 if (friend.audioSource && friend.jumpAudio)
-                    friend.audioSource.PlayOneShot(friend.jumpAudio);
+                    friend.PlayJumpAudio();
             }
         }
     }

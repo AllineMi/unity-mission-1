@@ -2,9 +2,7 @@
 
 namespace Platformer.Mechanics
 {
-    /// <summary>
-    /// Base class for Collider triggers with all the basic logic necessary for PlayerController.
-    /// </summary>
+    /// <summary> Base class for Collider triggers with all the basic logic necessary for PlayerController. </summary>
     public abstract class BasePlayerColliderTrigger : MonoBehaviour
     {
         protected abstract void DoEnterTriggerAction();
