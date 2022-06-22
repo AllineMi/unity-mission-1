@@ -91,15 +91,6 @@ namespace Platformer.Mechanics
 
         #endregion
 
-        #region JUMP
-
-        public override void Jump()
-        {
-            // throw new System.NotImplementedException();
-        }
-
-        #endregion
-
         #region MOVEMENT
 
         internal override void StopMoving()

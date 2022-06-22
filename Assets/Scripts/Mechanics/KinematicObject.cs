@@ -17,10 +17,9 @@ namespace Platformer.Mechanics
         /// </summary>
         public float gravityModifier = 1f;
 
-        /// <summary>
-        /// The current velocity of the entity.
-        /// </summary>
-        public Vector2 velocity;
+        /// <summary> The current velocity of the entity. </summary>
+        [Header("JUMP SETTINGS")]
+        [SerializeField] internal Vector2 velocity;
 
         /// <summary>
         /// Is the entity currently sitting on a surface?
@@ -28,7 +27,7 @@ namespace Platformer.Mechanics
         /// <value></value>
         public bool IsGrounded { get; private set; }
 
-        protected Vector2 targetVelocity;
+        [SerializeField] protected Vector2 targetVelocity;
         protected Vector2 groundNormal;
         protected Rigidbody2D body;
         protected ContactFilter2D contactFilter;

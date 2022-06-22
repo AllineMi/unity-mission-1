@@ -22,7 +22,7 @@ namespace Platformer.Mechanics
             if (!bigBoss.scareJump)
                 MakeBigBossJump();
 
-            if (bigBoss.scareJump && !bigBoss.canBecomeBigger && bigBoss.jumpState == JumpStatePlayer.Landed)
+            if (bigBoss.scareJump && !bigBoss.canBecomeBigger && bigBoss.jumpState == JumpState.Landed)
                 MakeBigBossBigger();
 
             if (bigBoss.canBecomeBigger && bigBoss.scareJump && player.playerScared == false &&

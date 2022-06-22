@@ -10,52 +10,52 @@ namespace Platformer.Mechanics
     /// </summary>
     public class PlayerController : BaseController
     {
+        /// <summary> Used for when we want to alter the value of some property and then set the value back </summary>
         private float defaultValue;
 
         #region AUDIO
 
-        [Header("AUDIO SETTINGS ----------------------")]
-        public AudioClip jumpAudioPlayer;
-
-        public AudioClip ouchAudioPlayer;
-        public AudioClip respawnAudioPlayer;
-        public AudioSource audioSourcePlayer;
-
+        [Header("AUDIO SETTINGS")]
+        [SerializeField] internal AudioClip jumpAudioPlayer;
+        [SerializeField] internal AudioClip ouchAudioPlayer;
+        [SerializeField] internal AudioClip respawnAudioPlayer;
+        [SerializeField] internal AudioSource audioSourcePlayer;
+        [SerializeField] internal AudioSource highFivePlayer;
+        
         #endregion
 
         #region BOUNDS
 
-        public Bounds Bounds => collider2dPlayer.bounds;
+        internal Bounds Bounds => boxCollider2D.bounds;
 
         #endregion
 
         #region COLLIDER
 
-        public Collider2D collider2dPlayer;
+        private BoxCollider2D boxCollider2D;
 
         #endregion
 
         #region HEALTH
 
-        [Header("HEALTH / TOKEN SETTINGS ----------------------")]
+        [Header("HEALTH SETTINGS")]
         public Health health;
 
         #endregion
 
         #region HURT
 
-        [Header("HURT SETTINGS ----------------------")]
-        public float hurtJumpTakeOffSpeedPlayer = 5f;
-
-        public float hurtMaxSpeedPlayer = 2f;
+        [Header("HURT SETTINGS")]
+        [SerializeField] internal float hurtJumpTakeOffSpeedPlayer = 5f;
+        [SerializeField] internal float hurtMaxSpeedPlayer = 2f;
         internal bool playerHurt;
 
         #endregion
 
         #region MOVEMENT
 
-        [Header("MOVEMENT SETTINGS ----------------------")]
-        public bool controlEnabledPlayer = true;
+        [Header("MOVEMENT SETTINGS ")]
+        [SerializeField] internal bool controlEnabledPlayer = true;
 
         #endregion
 
@@ -68,17 +68,16 @@ namespace Platformer.Mechanics
 
         #region SHORTCUT
 
-        [Header("SHORTCUT SETTINGS ----------------------")]
-        public bool playerStayOnElevator;
+        [Header("SHORTCUT SETTINGS")]
+        [SerializeField] internal bool playerStayOnElevator;
 
         #endregion
 
         #region TOKEN
 
-        [Header("TOKEN SETTINGS ----------------------")]
-        public Token token;
-
-        public RuntimeAnimatorController playerControllerTokens;
+        [Header("TOKEN SETTINGS")]
+        [SerializeField] internal Token token;
+        [SerializeField] internal RuntimeAnimatorController playerControllerTokens;
 
         #endregion
 
@@ -88,7 +87,7 @@ namespace Platformer.Mechanics
             audioSourcePlayer = GetComponent<AudioSource>();
 
             // COLLIDER
-            collider2dPlayer = GetComponent<Collider2D>();
+            boxCollider2D = GetComponent<BoxCollider2D>();
 
             // HEALTH
             health = GetComponent<Health>();
@@ -106,8 +105,10 @@ namespace Platformer.Mechanics
             if (controlEnabledPlayer)
             {
                 move.x = Input.GetAxis("Horizontal");
-                if (jumpState == JumpStatePlayer.Grounded && Input.GetButtonDown("Jump"))
-                    jumpState = JumpStatePlayer.PrepareToJump;
+                if (jumpState == JumpState.Grounded && Input.GetButtonDown("Jump"))
+                {
+                    jumpState = JumpState.PrepareToJump;
+                }
                 else if (Input.GetButtonUp("Jump"))
                 {
                     stopJump = true;
@@ -125,13 +126,12 @@ namespace Platformer.Mechanics
 
             if (!controlEnabledPlayer)
             {
-                if (jumpState == JumpStatePlayer.Landed)
+                if (jumpState == JumpState.Landed)
                 {
                     if (playerScared || playerHurt)
                     {
                         StopMoving();
                         ResetPlayerJumpTakeOffSpeed();
-                        ResetSpeedPlayer();
                     }
                 }
 
@@ -162,6 +162,7 @@ namespace Platformer.Mechanics
 
             #endregion
 
+            ComputeVelocity();
             base.Update();
         }
 
@@ -186,6 +187,11 @@ namespace Platformer.Mechanics
             audioSourcePlayer.PlayOneShot(ouchAudioPlayer);
         }
 
+        internal void PlayJumpAudio()
+        {
+            audioSourcePlayer.PlayOneShot(jumpAudioPlayer);
+        }
+
         internal void PlayRespawnAudio()
         {
             audioSourcePlayer.PlayOneShot(respawnAudioPlayer);
@@ -193,16 +199,16 @@ namespace Platformer.Mechanics
 
         #endregion
 
-        #region COLLIDER
+        #region BOX COLLIDER
 
         internal void EnableCollider()
         {
-            collider2dPlayer.enabled = true;
+            boxCollider2D.enabled = true;
         }
 
         internal void DisableCollider()
         {
-            collider2dPlayer.enabled = false;
+            boxCollider2D.enabled = false;
         }
 
         #endregion
@@ -220,7 +226,7 @@ namespace Platformer.Mechanics
         /// <summary> If Player facing West, if spriteRenderer Flip X True </summary>
         internal void JumpHurtRight()
         {
-            maxSpeed = hurtMaxSpeedPlayer;
+           maxSpeed = hurtMaxSpeedPlayer;
             Jump(hurtJumpTakeOffSpeedPlayer);
             MoveRight();
         }
@@ -233,12 +239,7 @@ namespace Platformer.Mechanics
         {
             defaultValue = jumpTakeOffSpeed;
             jumpTakeOffSpeed = characterJumpVelocity;
-            jumpState = JumpStatePlayer.PrepareToJump;
-        }
-
-        public override void Jump()
-        {
-            Jump(jumpTakeOffSpeed);
+            jumpState = JumpState.PrepareToJump;
         }
 
         void ResetPlayerJumpTakeOffSpeed()
@@ -272,11 +273,6 @@ namespace Platformer.Mechanics
             }
         }
 
-        void ResetSpeedPlayer()
-        {
-            maxSpeed = 5f;
-        }
-
         internal void EnableInput()
         {
             controlEnabledPlayer = true;
@@ -296,9 +292,10 @@ namespace Platformer.Mechanics
             playerScared = true;
             playerJumpScaredRan = true;
             animator.SetTrigger("hurt");
-            jumpState = JumpStatePlayer.PrepareToJump;
+            jumpState = JumpState.PrepareToJump;
             MoveRight();
-            jumpTakeOffSpeed = 1f;
+            defaultValue = jumpTakeOffSpeed;
+            jumpTakeOffSpeed = 3f;
         }
 
         #endregion

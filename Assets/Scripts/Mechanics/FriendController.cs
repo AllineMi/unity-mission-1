@@ -14,13 +14,13 @@ namespace Platformer.Mechanics
 
         #region BOUNDS
 
-        public Bounds Bounds => collider2d.bounds;
+        public Bounds Bounds => boxCollider2D.bounds;
 
         #endregion
 
         #region COLLIDER
 
-        public Collider2D collider2d;
+        public BoxCollider2D boxCollider2D;
 
         #endregion
 
@@ -30,16 +30,26 @@ namespace Platformer.Mechanics
             audioSource = GetComponent<AudioSource>();
 
             // COLLIDER
-            collider2d = GetComponent<Collider2D>();
+            boxCollider2D = GetComponent<BoxCollider2D>();
 
             base.Awake();
         }
 
-        #region JUMP
-
-        public override void Jump()
+        protected override void Update()
         {
-            //throw new System.NotImplementedException();
+            if (jumpState == JumpState.Landed)
+            {
+                StopMoving();
+            }
+
+            base.Update();
+        }
+
+        #region AUDIO
+
+        internal void PlayJumpAudio()
+        {
+            audioSource.PlayOneShot(jumpAudio);
         }
 
         #endregion

@@ -7,7 +7,7 @@ namespace Platformer.Mechanics
 {
     public abstract class BaseController : KinematicObject
     {
-        public PlatformerModel platformerModel = Simulation.GetModel<PlatformerModel>();
+        internal PlatformerModel platformerModel = Simulation.GetModel<PlatformerModel>();
 
         #region ANIMATION
 
@@ -30,18 +30,19 @@ namespace Platformer.Mechanics
 
         #region JUMP - SPECIFICS ON CHARACTER - BASE HERE
 
-        public bool jump;
-        public bool stopJump;
-        public float jumpTakeOffSpeed = 7;
-        internal JumpStatePlayer jumpState = JumpStatePlayer.Grounded;
+        [Header("JUMP SETTINGS")]
+        [SerializeField] internal float jumpTakeOffSpeed = 7;
+        internal bool jump;
+        internal bool stopJump;
+        internal JumpState jumpState = JumpState.Grounded;
 
         #endregion
 
         #region MOVEMENT
 
         internal bool stopMoving;
-        internal float maxSpeed = 5;
-        internal float speed = 5;
+        [SerializeField] internal float maxSpeed = 5;
+        [SerializeField] internal float speed = 5;
         internal Vector2 move;
         internal MoveDirections moveDirection;
         internal Vector3 resetVector;
@@ -91,11 +92,6 @@ namespace Platformer.Mechanics
             spriteRenderer.flipX = false;
         }
 
-        internal void PlayJumpAnimation()
-        {
-            jumpState = JumpStatePlayer.PrepareToJump;
-        }
-
         internal void PlayHurtAnimation()
         {
             animator.SetTrigger("hurt");
@@ -115,39 +111,60 @@ namespace Platformer.Mechanics
 
         #region JUMP
 
-        public abstract void Jump();
+        public void Jump()
+        {
+            jumpState = JumpState.PrepareToJump;
+        }
 
-        void UpdateJumpState()
+        protected void UpdateJumpState()
         {
             jump = false;
             switch (jumpState)
             {
-                case JumpStatePlayer.PrepareToJump:
-                    jumpState = JumpStatePlayer.Jumping;
-                    jump = true;
-                    stopJump = false;
+                case JumpState.PrepareToJump:
+                    JumpStatePrepareToJump();
                     break;
-                case JumpStatePlayer.Jumping:
-                    if (!IsGrounded)
-                    {
-                        Simulation.Schedule<CharacterJumped>();
-                        jumpState = JumpStatePlayer.InFlight;
-                    }
+                case JumpState.Jumping:
+                    JumpStateJumping();
+                    break;
+                case JumpState.InFlight:
+                    JumpStateInFlight();
 
                     break;
-                case JumpStatePlayer.InFlight:
-                    if (IsGrounded)
-                    {
-                        Simulation.Schedule<PlayerLanded>().baseController = this;
-                        jumpState = JumpStatePlayer.Landed;
-                    }
-
+                case JumpState.Landed:
+                    JumpStateLanded();
                     break;
-                case JumpStatePlayer.Landed:
-                    StopMoving();
-                    jumpState = JumpStatePlayer.Grounded;
-                   break;
             }
+        }
+
+        private void JumpStateLanded()
+        {
+            jumpState = JumpState.Grounded;
+        }
+
+        private void JumpStateInFlight()
+        {
+            if (IsGrounded)
+            {
+                Simulation.Schedule<PlayerLanded>().baseController = this;
+                jumpState = JumpState.Landed;
+            }
+        }
+
+        private void JumpStateJumping()
+        {
+            if (!IsGrounded)
+            {
+                Simulation.Schedule<CharacterJumped>().baseController = this;
+                jumpState = JumpState.InFlight;
+            }
+        }
+
+        private void JumpStatePrepareToJump()
+        {
+            jumpState = JumpState.Jumping;
+            jump = true;
+            stopJump = false;
         }
 
         #endregion

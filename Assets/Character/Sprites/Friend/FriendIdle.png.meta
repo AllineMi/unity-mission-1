@@ -4,13 +4,13 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: -5475366130073826729
-    second: FriendIdle_0
+    second: FriendSad_0
   - first:
       213: -6868563620572734475
-    second: FriendIdle_1
+    second: FriendSad_1
   - first:
       213: 1361529600952202414
-    second: FriendIdle_2
+    second: FriendSad_2
   - first:
       213: 5808909139665090015
     second: FriendIdle_14
@@ -31,13 +31,13 @@ TextureImporter:
     second: FriendIdle_8
   - first:
       213: 8103453239034961048
-    second: FriendIdle_0
+    second: FriendSad_0
   - first:
       213: -7288569755755191838
-    second: FriendIdle_1
+    second: FriendSad_1
   - first:
       213: 6792230758263029330
-    second: FriendIdle_2
+    second: FriendSad_2
   - first:
       213: -324924673135403493
     second: FriendIdle_14
@@ -163,7 +163,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: FriendIdle_0
+      name: FriendSad_0
       rect:
         serializedVersion: 2
         x: 128
@@ -184,7 +184,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FriendIdle_1
+      name: FriendSad_1
       rect:
         serializedVersion: 2
         x: 256
@@ -205,7 +205,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FriendIdle_2
+      name: FriendSad_2
       rect:
         serializedVersion: 2
         x: 384

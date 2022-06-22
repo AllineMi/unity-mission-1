@@ -50,6 +50,8 @@ namespace Platformer.Mechanics
 
         protected override void Update()
         {
+            if (jumpState == JumpState.Landed) StopMoving();
+
             if (canBecomeBigger) BecomeBigger();
             base.Update();
         }
@@ -110,9 +112,9 @@ namespace Platformer.Mechanics
 
         #region SCARING JUMP
 
-        public override void Jump()
+        public void ScaryJump()
         {
-            jumpState = JumpStatePlayer.PrepareToJump;
+            jumpState = JumpState.PrepareToJump;
             MoveRight();
         }
 
